@@ -9,7 +9,9 @@ export class Server {
     return new Server(port);
   }
 
-  start(callback: () => void) {}
+  start(callback: () => void) {
+    this.connect().then(() => {});
+  }
 
   private async connect() {}
 }
