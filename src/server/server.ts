@@ -5,7 +5,7 @@ import morgan from "morgan";
 import { LOG_FORMAT } from "../constants/environments.constant";
 import { stream } from "../utils/logger/logger.util";
 import { createConnection } from "typeorm";
-
+import cors from "cors";
 export default class Server {
   private port: number;
 
@@ -25,6 +25,7 @@ export default class Server {
           swaggerUi.serve,
           swaggerUi.setup(specs.default, { explorer: true })
         );
+        app.use(cors());
         app.use(morgan(LOG_FORMAT, { stream }));
         app.listen(this.port, callback);
       })

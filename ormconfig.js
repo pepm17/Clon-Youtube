@@ -8,5 +8,5 @@ module.exports = {
   useUnifiedTopology: true,
   synchronize: false,
   logging: false,
-  entities: [resolve(__dirname, "src/models/v1/*{.ts,.js}")],
+  entities: [resolve(__dirname, "src/models/**/*{.ts,.js}")],
 };
