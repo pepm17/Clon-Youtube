@@ -1,3 +1,4 @@
+import "./config";
 import "./injector";
 import Server from "./server/server";
 import logger from "./utils/logger/logger.util";

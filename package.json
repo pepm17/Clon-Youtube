@@ -18,6 +18,7 @@
   "author": "Pablo Emilio Pupo Marchena",
   "license": "ISC",
   "dependencies": {
+    "@types/dotenv": "^8.2.0",
     "@types/i18next-node-fs-backend": "^2.1.0",
     "@types/jest": "^26.0.15",
     "@types/morgan": "^1.9.2",
