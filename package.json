@@ -28,7 +28,6 @@
     "bcrypt": "^5.0.0",
     "class-transformer": "^0.3.1",
     "class-validator": "^0.12.2",
-    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "i18next": "^19.8.4",
@@ -51,7 +50,6 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^3.0.0",
-    "@types/cors": "^2.8.8",
     "@types/jsonwebtoken": "^8.5.0",
     "@types/mongoose": "^5.7.37",
     "@types/node": "^14.14.6",
