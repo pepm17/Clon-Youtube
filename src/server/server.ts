@@ -6,7 +6,7 @@ import { LOG_FORMAT } from "../constants/environments.constant";
 import { stream } from "../utils/logger/logger.util";
 import { createConnection } from "typeorm";
 
-export class Server {
+export default class Server {
   private port: number;
 
   constructor(port: number) {

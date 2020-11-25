@@ -1,9 +1,9 @@
-import "./config";
-import { Server } from "./server/server";
+import "./injector";
+import Server from "./server/server";
 import logger from "./utils/logger/logger.util";
 
 const server = Server.init((process.env.PORT as unknown) as number);
 
 server.start(() => {
-  logger.info(logger.info(`Server is running at PORT: ${process.env.PORT}`));
+  logger.info(`Server is running at PORT: ${process.env.PORT}`);
 });
