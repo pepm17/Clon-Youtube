@@ -100,5 +100,10 @@
     "testEnvironment": "node",
     "testTimeout": 30000,
     "collectCoverage": true
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test"
+    }
   }
 }
