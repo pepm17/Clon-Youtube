@@ -6,9 +6,9 @@ import {
   UpdateDateColumn,
   ObjectID,
   ObjectIdColumn,
-  Generated,
+  BeforeInsert,
 } from "typeorm";
-
+import bcrypt from "bcrypt";
 @Entity()
 export class User {
   @ObjectIdColumn({ name: "_id", type: "varchar" })
@@ -24,12 +24,18 @@ export class User {
   @Column({ nullable: false })
   password!: string;
 
-  @Column({ nullable: false })
-  confirmPassword!: string;
-
   @CreateDateColumn({ type: "timestamp", nullable: true })
   createdAt!: Date;
 
   @UpdateDateColumn({ type: "timestamp", nullable: true })
   updatedAt!: Date;
+
+  @BeforeInsert()
+  async hashPassword() {
+    this.password = await bcrypt.hash(this.password, 10);
+  }
+
+  async comparePassword(attempt: string): Promise<boolean> {
+    return await bcrypt.compare(attempt, this.password);
+  }
 }

@@ -19,10 +19,13 @@ export class UserRepository implements IUserRepository {
     registerUser: RegisterFilterValidator
   ): Promise<UserDto | null> {
     const { email, username } = registerUser;
-    const user = await this.findOne({ username, email });
-    if (user) return null;
-    return ((await this.repository.save(
+    const userExist = await this.findOne({ username, email });
+    if (userExist) return null;
+    const user = (this.repository.create(
       (registerUser as unknown) as User
+    ) as unknown) as UserDto;
+    return ((await this.repository.save(
+      (user as unknown) as User
     )) as unknown) as UserDto;
   }
   async login(loginUser: LoginUser): Promise<LoginUser | null> {
