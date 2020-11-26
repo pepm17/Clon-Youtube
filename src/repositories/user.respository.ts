@@ -31,8 +31,16 @@ export class UserRepository implements IUserRepository {
     if (!user) return null;
     const comparePassword = await user.comparePassword(loginUser.password);
     if (!comparePassword) return null;
-    return (user as unknown) as LoginUser;
+    const { _id, email, username } = user;
+    return ({ _id, email, username } as unknown) as LoginUser;
   }
+  async findById(id: string | number): Promise<LoginUser | null> {
+    const user = await this.repository.findOne(id);
+    if (!user) return null;
+    const { _id, email, username } = user;
+    return ({ _id, email, username } as unknown) as LoginUser;
+  }
+
   private async existUser(existUser: ExistUser): Promise<User | null> {
     const user = await this.repository.findOne({
       where: {
