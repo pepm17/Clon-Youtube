@@ -5,6 +5,10 @@ import morgan from "morgan";
 import { LOG_FORMAT } from "../constants/environments.constant";
 import { stream } from "../utils/logger/logger.util";
 import { createConnection } from "typeorm";
+import passport from "passport";
+import { PassportMiddleware } from "../middlewares/passport.middleware";
+import { Container } from "typedi";
+
 export default class Server {
   private port: number;
 
@@ -23,6 +27,10 @@ export default class Server {
           "/api-docs",
           swaggerUi.serve,
           swaggerUi.setup(specs.default, { explorer: true })
+        );
+        app.use(passport.initialize());
+        passport.use(
+          Container.get<PassportMiddleware>(PassportMiddleware).strategy()
         );
         app.use(morgan(LOG_FORMAT, { stream }));
         app.listen(this.port, callback);
