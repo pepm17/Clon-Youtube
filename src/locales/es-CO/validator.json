@@ -15,5 +15,6 @@
   "minLength": "El campo {{value}} contiene un número de caracteres inferior a lo permitido",
   "maxLength": "El campo {{value}} contiene un número de caracteres inferior a lo permitido",
   "isEnum": "El campo {{value}} no contiene un valor admitido de la lista de valores",
-  "isEmail": "El campo {{value}} debe seguir la estructra xxx@yyy.zzz"
+  "isEmail": "El campo {{value}} debe seguir la estructra xxx@yyy.zzz",
+  "isMatchPassword": "Las password no coinciden"
 }

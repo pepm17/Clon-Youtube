@@ -1,4 +1,5 @@
 import { IsEmail, IsString } from "class-validator";
+import { Match } from "../../utils/decorators/match.decorator";
 
 export class RegisterFilterValidator {
   @IsEmail({}, { message: "validator:isEmail" })
@@ -7,6 +8,7 @@ export class RegisterFilterValidator {
   username!: string;
   @IsString({ message: "validator:isString" })
   password!: string;
+  @Match("password", { message: "validator:isMatchPassword" })
   @IsString({ message: "validator:isString" })
   confirmPassword!: string;
 }
