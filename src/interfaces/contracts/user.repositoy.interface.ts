@@ -1,7 +1,10 @@
-import { RegisterFilterValidator } from "../../validators/requestFilter/registerFilter.validator";
+import {
+  LoginFilterValidator,
+  RegisterFilterValidator,
+} from "../../validators/requestFilter";
 import { LoginUser, UserDto } from "../dtos";
 
 export interface IUserRepository {
   register(registerUser: RegisterFilterValidator): Promise<UserDto | null>;
-  login(loginUser: LoginUser): Promise<LoginUser | null>;
+  login(loginUser: LoginFilterValidator): Promise<LoginUser | null>;
 }

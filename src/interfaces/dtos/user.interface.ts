@@ -14,8 +14,15 @@ export interface RegisterUser {
   confirmPassword: string;
 }
 export interface LoginUser {
+  _id: string;
   username: string;
-  password: string;
+  email: string;
+}
+export interface LoginUserToken {
+  _id: string;
+  username: string;
+  email: string;
+  token: string;
 }
 export interface ExistUser {
   username: string;

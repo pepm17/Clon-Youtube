@@ -1,29 +1,21 @@
-import {
-  Post,
-  Req,
-  Res,
-  Param,
-  JsonController,
-  Body,
-} from "routing-controllers";
-import { Response } from "express";
-import { IRequest } from "../interfaces/request.interface";
+import { Post, JsonController, Body } from "routing-controllers";
 import { Inject } from "typedi";
-import { UserService } from "../services/user.service";
-import { IUserService } from "../interfaces/contracts/user.service.interface";
-import { RegisterFilterValidator } from "../validators/requestFilter/registerFilter.validator";
+import { AuthService } from "../services/auth.service";
+import { IAuthService } from "../interfaces/contracts/auth.service.interface";
+import {
+  LoginFilterValidator,
+  RegisterFilterValidator,
+} from "../validators/requestFilter";
 
 @JsonController("/user")
 export class UserController {
-  constructor(@Inject(() => UserService) private userService: IUserService) {}
+  constructor(@Inject(() => AuthService) private authService: IAuthService) {}
   @Post("/register")
   async login(@Body() body: RegisterFilterValidator) {
-    const register = await this.userService.register(body);
-
-    return { response: register };
+    return { response: await this.authService.register(body) };
   }
   @Post("/login")
-  async register(@Req() req: IRequest, @Res() res: Response) {
-    return { response: `${req.i18n.t("translation:messages.user.login")}` };
+  async register(@Body() body: LoginFilterValidator) {
+    return { response: await this.authService.login(body) };
   }
 }

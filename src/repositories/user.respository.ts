@@ -2,13 +2,11 @@ import { User } from "../models/user.model";
 import { getRepository, Repository } from "typeorm";
 import { IUserRepository } from "../interfaces/contracts/user.repositoy.interface";
 import { Service } from "typedi";
+import { ExistUser, LoginUser, UserDto } from "../interfaces/dtos";
 import {
-  RegisterUser,
-  LoginUser,
-  ExistUser,
-  UserDto,
-} from "../interfaces/dtos";
-import { RegisterFilterValidator } from "../validators/requestFilter/registerFilter.validator";
+  LoginFilterValidator,
+  RegisterFilterValidator,
+} from "../validators/requestFilter";
 @Service()
 export class UserRepository implements IUserRepository {
   private readonly repository: Repository<User>;
@@ -19,7 +17,7 @@ export class UserRepository implements IUserRepository {
     registerUser: RegisterFilterValidator
   ): Promise<UserDto | null> {
     const { email, username } = registerUser;
-    const userExist = await this.findOne({ username, email });
+    const userExist = await this.existUser({ username, email });
     if (userExist) return null;
     const user = (this.repository.create(
       (registerUser as unknown) as User
@@ -28,14 +26,18 @@ export class UserRepository implements IUserRepository {
       (user as unknown) as User
     )) as unknown) as UserDto;
   }
-  async login(loginUser: LoginUser): Promise<LoginUser | null> {
-    const user = await this.findOne((loginUser as unknown) as ExistUser);
+  async login(loginUser: LoginFilterValidator): Promise<LoginUser | null> {
+    const user = await this.existUser((loginUser as unknown) as ExistUser);
     if (!user) return null;
-    return user as LoginUser;
+    const comparePassword = await user.comparePassword(loginUser.password);
+    if (!comparePassword) return null;
+    return (user as unknown) as LoginUser;
   }
-  private async findOne(existUser: ExistUser): Promise<User | null> {
+  private async existUser(existUser: ExistUser): Promise<User | null> {
     const user = await this.repository.findOne({
-      where: existUser,
+      where: {
+        $or: [{ email: existUser.email }, { username: existUser.username }],
+      },
     });
     if (user === undefined) return null;
     return user;
