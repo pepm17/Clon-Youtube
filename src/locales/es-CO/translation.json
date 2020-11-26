@@ -5,10 +5,11 @@
     },
     "user": {
       "login": {
-        "UserNotExist": "Login"
+        "UserNotExist": "Usuario no existe",
+        "BadCredentials": "Las credenciales no concuerdan"
       },
       "register": {
-        "userExist": "User already exist"
+        "userExist": "Usuario ya existe"
       }
     },
     "requestError": {
