@@ -1,0 +1,18 @@
+{
+  "messages": {
+    "server": {
+      "success": "Server is up"
+    },
+    "user": {
+      "login": {
+        "UserNotExist": "Login"
+      },
+      "register": {
+        "userExist": "User already exist"
+      }
+    },
+    "requestError": {
+      "internError": "Ha ocurrido un error interno en la consulta"
+    }
+  }
+}
