@@ -31,7 +31,7 @@ export class AuthService implements IAuthService {
     return this.createToken(user);
   }
   private createToken(loginUserToken: LoginUser): string {
-    return jwt.sign(loginUserToken, JWT.Secret, {
+    return jwt.sign({ loginUserToken }, JWT.Secret, {
       expiresIn: 86400,
     });
   }
