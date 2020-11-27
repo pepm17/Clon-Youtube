@@ -4,9 +4,11 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   BeforeInsert,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
 import bcrypt from "bcrypt";
+import { Video } from "./video.model";
 @Entity()
 export class User {
   @PrimaryGeneratedColumn({
@@ -23,6 +25,12 @@ export class User {
 
   @Column({ nullable: false })
   password!: string;
+
+  @OneToMany(() => Video, (video) => video.postedBy, {
+    onDelete: "CASCADE",
+    nullable: true,
+  })
+  videos!: Video[];
 
   @CreateDateColumn({ type: "timestamp", nullable: true })
   createdAt!: Date;
