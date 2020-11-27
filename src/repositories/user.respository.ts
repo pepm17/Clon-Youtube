@@ -1,6 +1,6 @@
 import { User } from "../models/user.model";
 import { getRepository, Repository } from "typeorm";
-import { IUserRepository } from "../interfaces/contracts/user.repositoy.interface";
+import { IUserRepository } from "../interfaces/contracts";
 import { Service } from "typedi";
 import { ExistUser, LoginUser, UserDto } from "../interfaces/dtos";
 import {
@@ -43,9 +43,7 @@ export class UserRepository implements IUserRepository {
 
   private async existUser(existUser: ExistUser): Promise<User | null> {
     const user = await this.repository.findOne({
-      where: {
-        $or: [{ email: existUser.email }, { username: existUser.username }],
-      },
+      where: [{ email: existUser.email }, { username: existUser.username }],
     });
     if (user === undefined) return null;
     return user;

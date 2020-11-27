@@ -1,7 +1,7 @@
 import { Post, JsonController, Body } from "routing-controllers";
 import { Inject } from "typedi";
-import { AuthService } from "../services/auth.service";
-import { IAuthService } from "../interfaces/contracts/auth.service.interface";
+import { AuthService } from "../services";
+import { IAuthService } from "../interfaces/contracts";
 import {
   LoginFilterValidator,
   RegisterFilterValidator,

@@ -1,8 +1,7 @@
-import { IUserService } from "../interfaces/contracts/user.service.interface";
 import { Inject, Service } from "typedi";
 import { LoginUser } from "../interfaces/dtos";
 import { UserRepository } from "../repositories/user.respository";
-import { IUserRepository } from "../interfaces/contracts/user.repositoy.interface";
+import { IUserRepository, IUserService } from "../interfaces/contracts";
 
 @Service()
 export class UserService implements IUserService {

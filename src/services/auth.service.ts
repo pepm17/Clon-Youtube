@@ -1,7 +1,6 @@
 import { UserRepository } from "../repositories/user.respository";
 import { Inject, Service } from "typedi";
-import { IAuthService } from "../interfaces/contracts/auth.service.interface";
-import { IUserRepository } from "../interfaces/contracts/user.repositoy.interface";
+import { IAuthService, IUserRepository } from "../interfaces/contracts";
 import { UserDto, LoginUserToken, LoginUser } from "../interfaces/dtos";
 import { BadRequestError } from "routing-controllers";
 import jwt from "jsonwebtoken";

@@ -2,7 +2,7 @@ import { Strategy, ExtractJwt, StrategyOptions } from "passport-jwt";
 import { UserService } from "../services/user.service";
 import { Inject } from "typedi";
 import { JWT } from "../constants/jwt.constant";
-import { IUserService } from "../interfaces/contracts/user.service.interface";
+import { IUserService } from "../interfaces/contracts";
 import logger from "../utils/logger/logger.util";
 
 export class PassportMiddleware {
