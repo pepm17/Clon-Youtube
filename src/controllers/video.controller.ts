@@ -1,4 +1,12 @@
-import { Post, JsonController, Body, Get, Params } from "routing-controllers";
+import {
+  Post,
+  JsonController,
+  Body,
+  Get,
+  Params,
+  UseBefore,
+  Req,
+} from "routing-controllers";
 import { Inject } from "typedi";
 import {
   FindByIdValidator,
@@ -6,6 +14,7 @@ import {
 } from "../validators/requestFilter";
 import { VideoService } from "../services";
 import { IVideoService } from "../interfaces/contracts";
+import { MulterMiddleware } from "../middlewares/multer.middleware";
 
 @JsonController("/video")
 export class VideoController {
@@ -21,7 +30,10 @@ export class VideoController {
     return { response: id };
   }
   @Post("/")
-  async register(@Body() body: VideoCreateFilterValidator) {
+  @UseBefore(new MulterMiddleware().init())
+  async createVideo(@Body() body: VideoCreateFilterValidator, @Req() req: any) {
+    body.video = req.files.video[0].path;
+    body.image = req.files.image[0].path;
     return { response: await this.videoService.createVideo(body) };
   }
 }

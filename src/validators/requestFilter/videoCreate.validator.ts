@@ -1,5 +1,4 @@
-import { IsEmail, IsString } from "class-validator";
-import { Match } from "../../utils/decorators/match.decorator";
+import { IsString } from "class-validator";
 
 export class VideoCreateFilterValidator {
   @IsString({ message: "validator:isString" })
@@ -7,7 +6,12 @@ export class VideoCreateFilterValidator {
   @IsString({ message: "validator:isString" })
   description!: string;
   @IsString({ message: "validator:isString" })
-  video!: string;
-  @IsString({ message: "validator:isString" })
-  image!: string;
+  postedBy!: string | number;
+  video: string;
+  image: string;
+
+  constructor() {
+    this.video = "";
+    this.image = "";
+  }
 }

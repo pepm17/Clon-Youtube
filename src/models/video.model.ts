@@ -19,10 +19,10 @@ export class Video {
   })
   _id!: number;
 
-  @Column({ nullable: false, unique: true })
+  @Column({ nullable: false })
   title!: string;
 
-  @Column({ nullable: false, unique: true })
+  @Column({ nullable: false })
   description!: string;
 
   @Column({ nullable: false })
