@@ -18,8 +18,24 @@ export class VideoRepository implements IVideoRepository {
       .addSelect(["user.username", "user.email", "user._id"])
       .getMany()) as unknown) as VideoDto[];
   }
-  findVideoById(id: string | number): Promise<any> {
-    throw new Error("Method not implemented.");
+  async findVideoById(_id: string | number): Promise<VideoDto | null> {
+    const video = await this.repository
+      .createQueryBuilder("video")
+      .where({ _id })
+      .leftJoin("video.postedBy", "user")
+      .addSelect(["user.username", "user.email", "user._id"])
+      .getOne();
+    if (!video) return null;
+    return (video as unknown) as VideoDto;
+  }
+  async findMyAllVideos(_id: string | number): Promise<VideoDto[]> {
+    const video = await this.repository
+      .createQueryBuilder("video")
+      .where({ postedBy: { _id } })
+      .leftJoin("video.postedBy", "user")
+      .addSelect(["user.username", "user.email", "user._id"])
+      .getMany();
+    return (video as unknown) as VideoDto[];
   }
   async createVideo(video: VideoCreateFilterValidator): Promise<VideoDto> {
     return ((await this.repository.save(

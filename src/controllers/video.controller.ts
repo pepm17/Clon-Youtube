@@ -27,7 +27,11 @@ export class VideoController {
   }
   @Get("/:id")
   async getById(@Params() id: FindByIdValidator) {
-    return { response: id };
+    return { response: await this.videoService.findVideoById(id.id) };
+  }
+  @Get("/user/:id")
+  async getMyAllVideos(@Params() id: FindByIdValidator) {
+    return { response: await this.videoService.findMyAllVideos(id.id) };
   }
   @Post("/")
   @UseBefore(new MulterMiddleware().init())

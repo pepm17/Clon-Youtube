@@ -12,6 +12,9 @@
         "userExist": "Usuario ya existe"
       }
     },
+    "video": {
+      "notFound": "No se encontró el video"
+    },
     "requestError": {
       "internError": "Ha ocurrido un error interno en la consulta"
     }

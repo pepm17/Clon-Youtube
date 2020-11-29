@@ -3,6 +3,7 @@ import { Inject } from "typedi";
 import { IVideoRepository, IVideoService } from "../interfaces/contracts";
 import { VideoDto } from "../interfaces/dtos";
 import { VideoCreateFilterValidator } from "../validators/requestFilter";
+import { NotFoundError } from "routing-controllers";
 
 @Inject()
 export class VideoService implements IVideoService {
@@ -12,11 +13,15 @@ export class VideoService implements IVideoService {
   ) {}
 
   async findAllVideos(): Promise<VideoDto[]> {
-    const videos = await this.videoRepository.findAllVideos();
-    return videos;
+    return await this.videoRepository.findAllVideos();
   }
-  findVideoById(id: string | number): Promise<any> {
-    throw new Error("Method not implemented.");
+  async findVideoById(id: string | number): Promise<VideoDto> {
+    const video = await this.videoRepository.findVideoById(id);
+    if (!video) throw new NotFoundError("translation:messages.video.notFound");
+    return video;
+  }
+  async findMyAllVideos(id: string | number): Promise<VideoDto[]> {
+    return await this.videoRepository.findMyAllVideos(id);
   }
   async createVideo(video: VideoCreateFilterValidator): Promise<VideoDto> {
     return await this.videoRepository.createVideo(video);
