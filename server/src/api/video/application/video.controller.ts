@@ -11,10 +11,9 @@ import { Inject } from "typedi";
 import {
   FindByIdValidator,
   VideoCreateFilterValidator,
-} from "../validators/requestFilter";
-import { VideoService } from "../services";
-import { IVideoService } from "../interfaces/contracts";
-import { MulterMiddleware } from "../middlewares/multer.middleware";
+} from "../../shared/validators/requestFilter";
+import { VideoService, IVideoService } from "../domain";
+import { MulterMiddleware } from "../../../middlewares";
 
 @JsonController("/video")
 export class VideoController {

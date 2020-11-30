@@ -1,16 +1,12 @@
-import { Transform } from "class-transformer";
 import {
   Entity,
   Column,
   CreateDateColumn,
   UpdateDateColumn,
-  ObjectID,
-  ObjectIdColumn,
   ManyToOne,
-  JoinColumn,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { User } from "./user.model";
+import { User } from "../../user/domain";
 @Entity()
 export class Video {
   @PrimaryGeneratedColumn({

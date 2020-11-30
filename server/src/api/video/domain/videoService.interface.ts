@@ -1,5 +1,5 @@
-import { VideoCreateFilterValidator } from "../../validators/requestFilter";
-import { VideoDto } from "../dtos";
+import { VideoCreateFilterValidator } from "../../shared/validators/requestFilter";
+import { VideoDto } from "../domain";
 
 export interface IVideoService {
   findAllVideos(): Promise<VideoDto[]>;

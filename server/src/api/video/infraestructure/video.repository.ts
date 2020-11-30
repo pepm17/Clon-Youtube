@@ -1,9 +1,7 @@
-import { Video } from "../models/video.model";
+import { Video, IVideoRepository, VideoDto } from "../domain";
 import { Inject } from "typedi";
 import { getRepository, Repository } from "typeorm";
-import { IVideoRepository } from "../interfaces/contracts";
-import { VideoDto } from "../interfaces/dtos";
-import { VideoCreateFilterValidator } from "../validators/requestFilter";
+import { VideoCreateFilterValidator } from "../../shared/validators/requestFilter";
 
 @Inject()
 export class VideoRepository implements IVideoRepository {

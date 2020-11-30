@@ -1,4 +1,4 @@
-import { LoginUser } from "./user.interface";
+import { LoginUser } from "../../user/domain";
 
 export interface VideoDto {
   _id: string;

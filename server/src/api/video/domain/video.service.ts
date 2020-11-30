@@ -1,8 +1,7 @@
-import { VideoRepository } from "../repositories";
+import { VideoRepository } from "../infraestructure";
 import { Inject } from "typedi";
-import { IVideoRepository, IVideoService } from "../interfaces/contracts";
-import { VideoDto } from "../interfaces/dtos";
-import { VideoCreateFilterValidator } from "../validators/requestFilter";
+import { IVideoRepository, IVideoService, VideoDto } from "../domain";
+import { VideoCreateFilterValidator } from "../../shared/validators/requestFilter";
 import { NotFoundError } from "routing-controllers";
 
 @Inject()
