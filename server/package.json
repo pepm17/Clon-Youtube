@@ -117,11 +117,5 @@
     "testEnvironment": "node",
     "testTimeout": 30000,
     "collectCoverage": true
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint && npm test && pretty-quick --staged",
-      "pre-push": "npm run lint && npm test"
-    }
   }
 }
