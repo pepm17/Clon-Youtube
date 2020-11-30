@@ -5,7 +5,7 @@ import { IAuthService } from "../domain/index";
 import {
   LoginFilterValidator,
   RegisterFilterValidator,
-} from "../../validators/requestFilter";
+} from "../../shared/validators/requestFilter";
 
 @JsonController("/user")
 export class UserController {

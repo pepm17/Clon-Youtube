@@ -6,7 +6,7 @@ import { ExistUser, LoginUser, UserDto } from "../domain";
 import {
   LoginFilterValidator,
   RegisterFilterValidator,
-} from "../../validators/requestFilter";
+} from "../../shared/validators/requestFilter";
 @Service()
 export class UserRepository implements IUserRepository {
   private readonly repository: Repository<User>;
