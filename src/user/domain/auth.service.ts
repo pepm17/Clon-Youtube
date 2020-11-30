@@ -1,14 +1,14 @@
-import { UserRepository } from "../repositories/user.respository";
+import { UserRepository } from "../infraestructure";
 import { Inject, Service } from "typedi";
-import { IAuthService, IUserRepository } from "../interfaces/contracts";
-import { UserDto, LoginUserToken, LoginUser } from "../interfaces/dtos";
+import { IAuthService, IUserRepository } from ".";
+import { UserDto, LoginUserToken, LoginUser } from "./";
 import { BadRequestError } from "routing-controllers";
 import jwt from "jsonwebtoken";
 import {
   LoginFilterValidator,
   RegisterFilterValidator,
-} from "../validators/requestFilter";
-import { JWT } from "../constants/jwt.constant";
+} from "../../validators/requestFilter";
+import { JWT } from "../../constants/jwt.constant";
 @Service()
 export class AuthService implements IAuthService {
   constructor(

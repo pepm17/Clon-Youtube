@@ -2,7 +2,7 @@ import {
   LoginFilterValidator,
   RegisterFilterValidator,
 } from "../../validators/requestFilter";
-import { LoginUser, UserDto } from "../dtos";
+import { LoginUser, UserDto } from "./";
 
 export interface IUserRepository {
   register(registerUser: RegisterFilterValidator): Promise<UserDto | null>;

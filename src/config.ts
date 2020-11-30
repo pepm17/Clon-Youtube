@@ -1,7 +1,7 @@
 import { config } from "dotenv";
 import { resolve } from "path";
 import { ENV } from "./constants/environments.constant";
-import logger from "./utils/logger/logger.util";
+import logger from "./shared/utils/logger/logger.util";
 switch (process.env.NODE_ENV) {
   default:
     logger.info(`Loaded environment: ${ENV.LOCAL}`);

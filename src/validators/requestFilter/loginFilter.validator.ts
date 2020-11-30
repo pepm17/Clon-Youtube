@@ -1,5 +1,5 @@
 import { IsEmail, IsString } from "class-validator";
-import { Match } from "../../utils/decorators/match.decorator";
+import { Match } from "../../shared/utils/decorators/match.decorator";
 
 export class LoginFilterValidator {
   @IsString({ message: "validator:isString" })
