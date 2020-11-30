@@ -1,6 +1,6 @@
 import { createLogger, format, transports } from "winston";
 import { TransformableInfo } from "logform";
-import { ENV } from "../../constants";
+import { ENV } from "../../../../constants";
 
 const { combine, timestamp, prettyPrint, colorize, align, printf } = format;
 

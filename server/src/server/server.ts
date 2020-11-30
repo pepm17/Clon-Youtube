@@ -3,7 +3,7 @@ import swaggerUi from "swagger-ui-express";
 import * as specs from "../docs/swager.config";
 import morgan from "morgan";
 import { LOG_FORMAT } from "../constants/environments.constant";
-import { stream } from "../utils/logger/logger.util";
+import { stream } from "../api/shared/utils/logger/logger.util";
 import { createConnection } from "typeorm";
 import passport from "passport";
 import { PassportMiddleware } from "../middlewares/passport.middleware";

@@ -1,12 +1,12 @@
-import { User } from "../models/user.model";
+import { User } from "../domain";
 import { getRepository, Repository } from "typeorm";
-import { IUserRepository } from "../interfaces/contracts";
+import { IUserRepository } from "../domain";
 import { Service } from "typedi";
-import { ExistUser, LoginUser, UserDto } from "../interfaces/dtos";
+import { ExistUser, LoginUser, UserDto } from "../domain";
 import {
   LoginFilterValidator,
   RegisterFilterValidator,
-} from "../validators/requestFilter";
+} from "../../shared/validators/requestFilter";
 @Service()
 export class UserRepository implements IUserRepository {
   private readonly repository: Repository<User>;
