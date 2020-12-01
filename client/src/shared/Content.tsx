@@ -6,8 +6,8 @@ export const Content = () => {
     return (
         <div className="video_content">
             <div className="video_content_container">
-                <VideoGrid />
-                <VideoGrid />
+                <VideoGrid title={"Title"}/>
+                <VideoGrid title={"Title2"}/>
             </div>            
         </div>
     )

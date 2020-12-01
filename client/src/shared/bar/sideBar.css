@@ -1,3 +1,4 @@
-.side_bar.iu.vertical.menu {
-  width: 1rem;
+.side_bar.ui.vertical.menu {
+  width: 15rem;
+  margin-top: 65px;
 }
