@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image } from 'semantic-ui-react';
 import "./VideoPreview.css";
-import PreviewImage from '../../asset/image/preview.jpg';
+import PreviewImage from '../asset/image/preview.jpg';
 import { IVideo } from './video.interface';
 
 export const VideoPreview = (props: IVideo) => {

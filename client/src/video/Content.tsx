@@ -1,5 +1,5 @@
 import React from 'react';
-import { VideoGrid } from './video/VideoGrid';
+import { VideoGrid } from './VideoGrid';
 import './Content.css'
 
 export const Content = () => {

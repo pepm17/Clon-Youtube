@@ -1,4 +1,4 @@
-import { IUserVideo } from '../../user/user.interface'
+import { IUserVideo } from '../user/user.interface'
 export interface IVideoGridHeader {
   title: string
 }
