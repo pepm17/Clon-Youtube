@@ -3,11 +3,13 @@ import { VideoPreview } from './VideoPreview';
 import './VideoGrid.css';
 import { VideoGridHeader } from './VideoGridHeader';
 import { Divider } from 'semantic-ui-react'
-export const VideoGrid = () => {
+import { IVideoGridHeader } from './video.interface';
+
+export const VideoGrid = (props:IVideoGridHeader) => {
     let preview = Array.apply(null, new Array(15)).map(()=><VideoPreview />);
     return (
         <>
-            <VideoGridHeader />
+            <VideoGridHeader title={props.title} />
             <div className="video_grid">{preview}</div>
             <Divider />
         </>
