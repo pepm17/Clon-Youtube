@@ -2,8 +2,9 @@ import React from 'react';
 import { Image } from 'semantic-ui-react';
 import "./VideoPreview.css";
 import PreviewImage from '../../asset/image/preview.jpg';
+import { IVideo } from './video.interface';
 
-export const VideoPreview = () => {
+export const VideoPreview = (props: IVideo) => {
     return  (
         <div className="video_preview">
             <div className="video_image">
@@ -13,9 +14,9 @@ export const VideoPreview = () => {
                 </div>
             </div>
             <div className="video_info">
-                <div>Test Video</div>
+                <div>{props.title}</div>
                 <div className="video_basic_info">
-                    <div className="video_channel">Ck Algos</div>
+                    <div className="video_channel">{props.postedBy.username}</div>
                     <div className="video_view_time">14k Views 33 Minutes Ago</div>
                 </div>
             </div>
