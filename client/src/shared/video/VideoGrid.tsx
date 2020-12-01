@@ -6,7 +6,7 @@ import { Divider } from 'semantic-ui-react'
 import { IVideoGridHeader } from './video.interface';
 
 export const VideoGrid = (props:IVideoGridHeader) => {
-    let preview = Array.apply(null, new Array(15)).map(()=><VideoPreview />);
+    let preview = Array.apply(null, new Array(15)).map((val,index)=><VideoPreview key={index} />);
     return (
         <>
             <VideoGridHeader title={props.title} />
