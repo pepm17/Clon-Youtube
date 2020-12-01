@@ -1,6 +1,8 @@
 .video_preview {
   display: grid;
   grid: 140px auto / 250px;
+  margin-left: 20px;
+  margin-bottom: 25px;
 }
 .video_image {
   position: relative;
