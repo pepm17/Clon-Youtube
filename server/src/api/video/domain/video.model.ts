@@ -27,6 +27,9 @@ export class Video {
   @Column({ nullable: false })
   image!: string;
 
+  @Column({ default: 0 })
+  view!: number;
+
   @ManyToOne(() => User, (user) => user.videos)
   postedBy!: User;
 
@@ -35,4 +38,8 @@ export class Video {
 
   @UpdateDateColumn({ type: "timestamp", nullable: true })
   updatedAt!: Date;
+
+  manageViews() {
+    this.view += 1;
+  }
 }

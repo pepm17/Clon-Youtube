@@ -24,6 +24,8 @@ export class VideoRepository implements IVideoRepository {
       .addSelect(["user.username", "user.email", "user._id"])
       .getOne();
     if (!video) return null;
+    video.manageViews();
+    this.repository.save(video);
     return (video as unknown) as VideoDto;
   }
   async findMyAllVideos(_id: string | number): Promise<VideoDto[]> {

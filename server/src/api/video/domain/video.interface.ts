@@ -5,6 +5,7 @@ export interface VideoDto {
   title: string;
   description: string;
   image: string;
+  view: number;
   postedBy: LoginUser;
   createAt: Date;
   updateAt: Date;
