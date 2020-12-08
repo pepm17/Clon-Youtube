@@ -4,6 +4,7 @@ import { resolve } from "path";
 import { createExpressServer } from "routing-controllers";
 
 const app: express.Application = createExpressServer({
+  cors: true,
   defaultErrorHandler: false,
   classTransformer: true,
   validation: true,
