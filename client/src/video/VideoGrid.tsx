@@ -4,7 +4,6 @@ import './VideoGrid.css'
 import { VideoGridHeader } from './VideoGridHeader'
 import { Divider } from 'semantic-ui-react'
 import { IVideoGridHeader } from './video.interface'
-// import { getAllVideos } from './video.redux'
 import { useSelector } from 'react-redux'
 import { RootStore } from "../redux/store"
 
