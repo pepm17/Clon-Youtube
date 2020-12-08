@@ -8,5 +8,5 @@ export interface IVideo {
   description: string
   view: number
   postedBy: IUserVideo
-  updatedAt: Date
+  createdAt: Date
 }

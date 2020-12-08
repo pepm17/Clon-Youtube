@@ -3,6 +3,10 @@
   grid: 192px auto / 345px;
   margin-left: 20px;
   margin-bottom: 25px;
+  color: black;
+}
+.video_preview:hover {
+  color: black;
 }
 .video_image {
   position: relative;
