@@ -1,6 +1,6 @@
 import app from "../app";
 import swaggerUi from "swagger-ui-express";
-import * as specs from "../docs/swager.config";
+import * as specs from "../docs/swagger";
 import morgan from "morgan";
 import { LOG_FORMAT } from "../constants/environments.constant";
 import { stream } from "../api/shared/utils/logger/logger.util";

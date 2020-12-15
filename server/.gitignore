@@ -5,3 +5,5 @@ coverage/
 dist/
 migrations/
 uploads/
+sonar-project.properties
+.scannerwork

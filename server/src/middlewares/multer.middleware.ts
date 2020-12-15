@@ -1,4 +1,4 @@
-import multer, { diskStorage, DiskStorageOptions, Multer, Field } from "multer";
+import multer, { diskStorage, DiskStorageOptions, Multer } from "multer";
 import { resolve } from "path";
 
 export class MulterMiddleware {
@@ -13,7 +13,12 @@ export class MulterMiddleware {
         cb(null, Date.now() + file.originalname);
       },
     };
-    this.upload = multer({ storage: diskStorage(this.storageOptions) });
+    this.upload = multer({
+      storage: diskStorage(this.storageOptions),
+      limits: {
+        fileSize: 8000000,
+      },
+    });
   }
   init() {
     const init = this.upload.fields([
