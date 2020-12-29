@@ -1,7 +1,7 @@
-import { UserRepository } from "../infraestructure";
+import { UserRepository } from "../infrastructure";
 import { Inject, Service } from "typedi";
-import { IAuthService, IUserRepository } from ".";
-import { UserDto, LoginUser } from ".";
+import { IAuthService, IUserRepository } from "../domain";
+import { UserDto, LoginUser } from "../domain";
 import { BadRequestError } from "routing-controllers";
 import jwt from "jsonwebtoken";
 import {

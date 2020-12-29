@@ -12,8 +12,9 @@ import {
   FindByIdValidator,
   VideoCreateFilterValidator,
 } from "../../shared/validators/requestFilter";
-import { VideoService, IVideoService } from "../domain";
+import { IVideoService } from "../domain";
 import { MulterMiddleware } from "../../../middlewares";
+import { VideoService } from "../application";
 
 @JsonController("/video")
 export class VideoController {

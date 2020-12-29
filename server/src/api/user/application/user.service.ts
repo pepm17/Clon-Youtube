@@ -1,7 +1,7 @@
 import { Inject, Service } from "typedi";
-import { LoginUser } from ".";
-import { UserRepository } from "../infraestructure";
-import { IUserRepository, IUserService } from ".";
+import { LoginUser } from "../domain";
+import { UserRepository } from "../infrastructure";
+import { IUserRepository, IUserService } from "../domain";
 
 @Service()
 export class UserService implements IUserService {

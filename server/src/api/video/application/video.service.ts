@@ -1,4 +1,4 @@
-import { VideoRepository } from "../infraestructure";
+import { VideoRepository } from "../infrastructure";
 import { Inject } from "typedi";
 import { IVideoRepository, IVideoService, VideoDto } from "../domain";
 import { VideoCreateFilterValidator } from "../../shared/validators/requestFilter";

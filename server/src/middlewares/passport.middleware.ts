@@ -1,8 +1,9 @@
 import { Strategy, ExtractJwt, StrategyOptions } from "passport-jwt";
-import { UserService, IUserService } from "../api/user/domain";
+import { IUserService } from "../api/user/domain";
 import { Inject } from "typedi";
 import { JWT } from "../constants/jwt.constant";
 import logger from "../api/shared/utils/logger/logger.util";
+import { UserService } from "../api/user/application";
 
 export class PassportMiddleware {
   private opts: StrategyOptions;
