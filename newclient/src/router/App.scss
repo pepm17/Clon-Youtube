@@ -31,3 +31,15 @@ body {
     }
   }
 }
+
+@media (max-width: $breackPoint-small) {
+  .app {
+    .app_sidebar {
+      width: 70px;
+    }
+
+    &_content {
+      min-height: 100vh;
+    }
+  }
+}
