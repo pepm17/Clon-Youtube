@@ -2,3 +2,21 @@ body {
   background: black;
   color: white;
 }
+
+.app {
+  display: flex;
+  flex-direction: column;
+
+  &_content {
+    display: flex;
+    flex-direction: row;
+
+    .app_sidebar {
+      width: 30%;
+    }
+
+    &_content {
+      width: 100%;
+    }
+  }
+}
