@@ -1,5 +1,5 @@
 import React from "react";
-import { AiOutlineMenu } from "react-icons/ai";
+import { AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
 import { RiVideoAddLine } from "react-icons/ri";
 import { IoMdApps, IoMdNotificationsOutline } from "react-icons/io";
 import "./index.scss";
@@ -14,6 +14,13 @@ const Header = () => {
           src="https://media.pasionmovil.com/2020/03/7b014b7e-youtube_logo.jpg"
           alt="logoImage"
         />
+      </div>
+
+      <div className="searchInput">
+        <input placeholder="Search" />
+        <button className="buttonSearch">
+          <AiOutlineSearch className="imageSearch" />
+        </button>
       </div>
 
       <div className="items">
