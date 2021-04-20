@@ -17,9 +17,11 @@
       width: 5rem;
       height: 5vh;
       margin: auto;
+      cursor: pointer;
     }
     .logoImage {
       width: 5rem;
+      cursor: pointer;
     }
   }
 
@@ -40,6 +42,7 @@
       color: whitesmoke;
       border: none;
       outline: none;
+      cursor: pointer;
     }
   }
 
@@ -55,6 +58,7 @@
       li {
         text-align: center;
         width: 3rem;
+        cursor: pointer;
 
         .itemIcon {
           width: 3rem;
@@ -67,6 +71,7 @@
       border-radius: 15rem;
       width: 3rem;
       margin: 0.5rem 1rem;
+      cursor: pointer;
     }
   }
 }

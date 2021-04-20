@@ -1,3 +1,5 @@
+@import "../constants/style.constant.scss";
+
 body {
   background: black;
   color: white;
@@ -10,6 +12,7 @@ body {
   &_content {
     display: flex;
     flex-direction: row;
+    min-height: 90vh;
 
     .app_sidebar {
       width: 30%;
@@ -17,6 +20,14 @@ body {
 
     &_content {
       width: 100%;
+    }
+  }
+}
+
+@media (max-width: $breackPoint-medium) {
+  .app {
+    &_content {
+      min-height: 100vh;
     }
   }
 }
