@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Header from "../components/header/header";
+import Header from "../components/header";
 import Home from "../pages/home";
-import NotFound from "../pages/notFound/notFound";
+import NotFound from "../pages/notFound";
 import "./App.scss";
 
 const App = () => {

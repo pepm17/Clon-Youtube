@@ -1,0 +1,64 @@
+@import "../../constants/style.constant.scss";
+
+.header {
+  background: rgba(29, 28, 28, 0.466);
+  width: 100%;
+  min-width: 100%;
+  height: 10vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .logo {
+    display: flex;
+    justify-content: space-around;
+
+    .menu {
+      width: 5rem;
+      height: 5vh;
+      margin: auto;
+    }
+    .logoImage {
+      width: 5rem;
+    }
+  }
+
+  .items {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+
+    .list {
+      list-style: none;
+      display: flex;
+
+      li {
+        text-align: center;
+        width: 3rem;
+
+        .itemIcon {
+          width: 3rem;
+          height: 5vh;
+        }
+      }
+    }
+
+    .userImage {
+      border-radius: 15rem;
+      width: 3rem;
+      margin: 0.5rem 1rem;
+    }
+  }
+}
+
+@media (max-width: $breackPoint-medium) {
+  .header {
+    .items {
+      .userImage {
+        border-radius: 2rem;
+        width: 3.5rem;
+        margin: 0.5rem 1rem;
+      }
+    }
+  }
+}
