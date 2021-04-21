@@ -6,7 +6,8 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { User } from "../../user/domain";
+import { User } from "../../user/infrastructure";
+
 @Entity()
 export class Video {
   @PrimaryGeneratedColumn({
