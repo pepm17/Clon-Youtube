@@ -1,29 +1,21 @@
 import React from "react";
 import { useEffect } from "react";
-import { useState } from "react";
-import { Video } from "../video/video.interface";
+import { useDispatch, useSelector } from "react-redux";
+import { AppState } from "../../redux/rootStore";
 import "./index.scss";
+import { fetchVideos } from "../video/video.actions";
 
 const Home = () => {
-  const [video, setVideo] = useState<Video[]>([]);
+  const dispatch = useDispatch();
+  const videoState = useSelector((state: AppState) => state.video);
 
   useEffect(() => {
-    getVideos();
-  }, []);
-
-  const getVideos = async () => {
-    try {
-      const result = await fetch("http://localhost:4000/video");
-      const response = await result.json();
-      setVideo(response.response);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    dispatch(fetchVideos());
+  }, [dispatch]);
 
   return (
     <div className="video_groups">
-      {video.map((data, index) => (
+      {videoState.videos.map((data, index) => (
         <div className="card" key={index}>
           <div className="video">
             <span>12:02</span>
