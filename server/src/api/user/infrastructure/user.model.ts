@@ -8,7 +8,8 @@ import {
   PrimaryGeneratedColumn,
 } from "typeorm";
 import bcrypt from "bcrypt";
-import { Video } from "../../video/domain";
+import { Video } from "../../video/infrastructure";
+
 @Entity()
 export class User {
   @PrimaryGeneratedColumn({

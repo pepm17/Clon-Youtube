@@ -1,4 +1,4 @@
-import { User } from "../domain";
+import { User } from ".";
 import { getRepository, Repository } from "typeorm";
 import { IUserRepository } from "../domain";
 import { Service } from "typedi";

@@ -1,4 +1,5 @@
-import { Video, IVideoRepository, VideoDto } from "../domain";
+import { IVideoRepository, VideoDto } from "../domain";
+import { Video } from "./video.model";
 import { Inject } from "typedi";
 import { getRepository, Repository } from "typeorm";
 import { VideoCreateFilterValidator } from "../../shared/validators/requestFilter";
