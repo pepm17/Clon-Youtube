@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node src/index.ts",
+    "start:docker": "npm run migration:generate Migration && npm run migration:run && ts-node src/index.ts",
     "dev": "nodemon src/index.ts",
     "build": "tsc -p tsconfig.json",
     "dev:inspect": "nodemon --inspect src/index.ts",
