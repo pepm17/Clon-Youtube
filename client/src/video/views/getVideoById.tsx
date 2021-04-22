@@ -1,9 +1,9 @@
-import React from "react";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Redirect } from "react-router-dom";
 import { AppState } from "../../common/redux/rootStore";
 import { getVideoById } from "../";
+import WatchVideo from "./watchVideo";
 
 interface VideoId {
   id: string;
@@ -22,9 +22,10 @@ const GetVideoById = () => {
     <>
       {video.error === "Video not found" ? (
         <Redirect push to="/page_not_found" />
-      ) : (
-        video.video?.title
-      )}
+      ) : undefined}
+      <div className="video_info_repro">
+        {video.video ? <WatchVideo video={video.video} /> : undefined}
+      </div>
     </>
   );
 };

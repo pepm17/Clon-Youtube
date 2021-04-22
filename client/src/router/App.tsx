@@ -5,7 +5,7 @@ import SideBar from "../common/sidebar";
 import AllVideos from "../video/views/allVideos";
 import NotFound from "../common/notFound";
 import "./App.scss";
-import GetVideoById from "../video/views/getVideoById";
+import WatchVideoPage from "../watchVideoPage/watchVideoPage";
 
 const App = () => {
   return (
@@ -19,7 +19,7 @@ const App = () => {
           <div className="app_content_content">
             <Switch>
               <Route exact path="/" component={AllVideos} />
-              <Route exact path="/video/:id" component={GetVideoById} />
+              <Route exact path="/video/:id" component={WatchVideoPage} />
               <Route component={NotFound} />
             </Switch>
           </div>
