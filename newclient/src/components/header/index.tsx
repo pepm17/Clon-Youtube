@@ -2,6 +2,7 @@ import React from "react";
 import { AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
 import { RiVideoAddLine } from "react-icons/ri";
 import { IoMdApps, IoMdNotificationsOutline } from "react-icons/io";
+import { Link } from "react-router-dom";
 import "./index.scss";
 
 const Header = () => {
@@ -9,11 +10,16 @@ const Header = () => {
     <div className="header">
       <div className="logo">
         <AiOutlineMenu className="menu" />
-        <img
-          className="logoImage"
-          src="https://media.pasionmovil.com/2020/03/7b014b7e-youtube_logo.jpg"
-          alt="logoImage"
-        />
+        <Link
+          to={`/`}
+          style={{ color: "white", textDecoration: "none", display: "flex" }}
+        >
+          <img
+            className="logoImage"
+            src="https://media.pasionmovil.com/2020/03/7b014b7e-youtube_logo.jpg"
+            alt="logoImage"
+          />
+        </Link>
       </div>
 
       <div className="searchInput">

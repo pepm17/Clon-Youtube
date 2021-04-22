@@ -6,17 +6,27 @@ import { RiVideoLine } from "react-icons/ri";
 import { FiHelpCircle } from "react-icons/fi";
 import { BsGear } from "react-icons/bs";
 import { MdSubscriptions, MdVideoLibrary, MdHistory } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const SideBar = () => {
   return (
     <div className="sidebar">
       <ul className="items">
-        <li>
-          <div className="icons">
-            <VscHome size={25} />
-          </div>
-          <span>Principal</span>
-        </li>
+        <Link
+          to={`/`}
+          style={{
+            color: "white",
+            textDecoration: "none",
+          }}
+        >
+          <li>
+            <div className="icons">
+              <VscHome size={25} />
+            </div>
+            <span>Principal</span>
+          </li>
+        </Link>
+
         <li>
           <div className="icons">
             <AiOutlineCompass size={25} />
