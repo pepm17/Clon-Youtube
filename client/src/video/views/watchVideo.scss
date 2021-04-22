@@ -1,0 +1,20 @@
+.video_repro_info {
+  display: inline;
+  width: 100%;
+  h3 {
+    font-size: 1.2rem;
+    margin: 1rem auto;
+  }
+
+  &_view_date {
+    color: rgba(128, 128, 128, 0.815);
+    span {
+      margin-right: 2rem;
+    }
+  }
+
+  p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

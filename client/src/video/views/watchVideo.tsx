@@ -1,17 +1,32 @@
 import React from "react";
 import { Video } from "../";
+import ReactPlayer from "react-player";
 
+import "./watchVideo.scss";
 const WatchVideo = ({ video }: { video: Video }) => {
   return (
-    <div className="video_reproductor">
-      <iframe
-        width="560"
-        height="315"
-        src="https://www.youtube.com/embed/IlcZY_qeBKs"
-        title="YouTube video player"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      ></iframe>
-    </div>
+    <>
+      <div className="video">
+        <ReactPlayer
+          url={"http://localhost:4000/" + video.video}
+          title="YouTube video player"
+          controls
+          width="100%"
+          height="100%"
+        ></ReactPlayer>
+      </div>
+      <div className="video_repro_info">
+        <h3>{video.title}</h3>
+        <div className="video_repro_info_view_date">
+          <span>{video.view + "views"}</span>
+          <span> {video.createdAt}</span>
+        </div>
+        <hr style={{ backgroundColor: "grey" }} />
+        <h4>{video.postedBy.username}</h4>
+        <p>{video.description}</p>
+      </div>
+      <hr style={{ backgroundColor: "grey" }} />
+    </>
   );
 };
 
