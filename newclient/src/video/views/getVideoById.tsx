@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, Redirect } from "react-router-dom";
 import { AppState } from "../../common/redux/rootStore";
 import { getVideoById } from "../";
 
@@ -18,7 +18,15 @@ const GetVideoById = () => {
     dispatch(getVideoById(id));
   }, [id, dispatch]);
 
-  return <>{video.video?.title}</>;
+  return (
+    <>
+      {video.error === "Video not found" ? (
+        <Redirect push to="/page_not_found" />
+      ) : (
+        video.video?.title
+      )}
+    </>
+  );
 };
 
 export default GetVideoById;

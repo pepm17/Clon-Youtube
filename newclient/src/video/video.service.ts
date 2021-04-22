@@ -28,6 +28,9 @@ export const getVideoById = (id: string) => {
     try {
       const result = await fetch(`http://localhost:4000/video/${id}`);
       const json = await result.json();
+      if(json.httpCode){
+        return dispatch(GetVideoByIdFail("Video not found"));
+      }
       dispatch(GetVideoByIdSuccess(json.response));
     } catch (error) {
       dispatch(GetVideoByIdFail("Error to get"));

@@ -6,7 +6,7 @@ import { getAllVideos } from "../";
 import "./allVideos.scss";
 import { Link } from "react-router-dom";
 
-const Home = () => {
+const AllVideos = () => {
   const dispatch = useDispatch();
   const videoState = useSelector((state: AppState) => state.video);
   useEffect(() => {
@@ -16,9 +16,8 @@ const Home = () => {
   return (
     <div className="video_groups">
       {videoState.videos?.map((data, index) => (
-        <div className="card">
+        <div key={index} className="card">
           <Link
-            key={index}
             to={`/video/${data._id}`}
             style={{ color: "white", textDecoration: "none" }}
           >
@@ -47,4 +46,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default AllVideos;

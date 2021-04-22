@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Header from "../components/header";
-import SideBar from "../components/sidebar";
+import Header from "../common/header";
+import SideBar from "../common/sidebar";
 import AllVideos from "../video/views/allVideos";
-import NotFound from "../pages/notFound";
+import NotFound from "../common/notFound";
 import "./App.scss";
 import GetVideoById from "../video/views/getVideoById";
 
