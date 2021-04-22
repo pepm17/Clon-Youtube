@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Header from "../components/header";
 import SideBar from "../components/sidebar";
-import AllVideos from "../video/allVideos";
+import AllVideos from "../video/views/allVideos";
 import NotFound from "../pages/notFound";
 import "./App.scss";
 

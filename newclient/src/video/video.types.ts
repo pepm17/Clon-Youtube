@@ -1,4 +1,4 @@
-import { User } from "../pages/user/user.interface";
+import { User } from "../user";
 
 export enum VideoActionsConst {
   GET_ALL_VIDEOS_LOADING = "GET_ALL_VIDEOS_LOADING",
