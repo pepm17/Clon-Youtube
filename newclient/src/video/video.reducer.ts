@@ -1,35 +1,37 @@
 import { Video, VideoActionsTypes, VideoActionsConst } from ".";
 
 export interface VideoStateStructure {
-    loading: boolean;
-    videos?: Video[];
-    video?: Video;
-    create?: boolean;
-    error: string;
+  loading: boolean;
+  videos?: Video[];
+  video?: Video;
+  create?: boolean;
+  error: string;
 }
 
 const initialState: VideoStateStructure = {
-    loading: true,
-    error: "",
-    videos: [],
-    video: undefined,
-    create: false
-}
+  loading: true,
+  error: "",
+  videos: [],
+  video: undefined,
+  create: false,
+};
 
-export const VideoReducer = (state = initialState, action: VideoActionsTypes): VideoStateStructure => {
-    switch(action.type){
-        
-        case VideoActionsConst.GET_ALL_VIDEOS_LOADING:{ 
-            return { ...action }
-        }
-
-        case VideoActionsConst.GET_ALL_VIDEOS_SUCCESS: 
-        return { ...action }
-
-        case VideoActionsConst.GET_ALL_VIDEOS_FAIL: 
-        return { ...action }
-
-        default: 
-            return state
+export const VideoReducer = (
+  state = initialState,
+  action: VideoActionsTypes
+): VideoStateStructure => {
+  switch (action.type) {
+    case VideoActionsConst.GET_ALL_VIDEOS_LOADING: {
+      return { ...action };
     }
-}
+
+    case VideoActionsConst.GET_ALL_VIDEOS_SUCCESS:
+      return { ...action };
+
+    case VideoActionsConst.GET_ALL_VIDEOS_FAIL:
+      return { ...action };
+
+    default:
+      return state;
+  }
+};
