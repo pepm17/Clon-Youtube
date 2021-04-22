@@ -31,6 +31,16 @@ export const VideoReducer = (
     case VideoActionsConst.GET_ALL_VIDEOS_FAIL:
       return { ...action };
 
+    case VideoActionsConst.GET_VIDEO_BY_ID_LOADING: {
+      return { ...action };
+    }
+
+    case VideoActionsConst.GET_VIDEO_BY_ID_SUCCESS:
+      return { ...action };
+
+    case VideoActionsConst.GET_VIDEO_BY_ID_FAIL:
+      return { ...action };
+
     default:
       return state;
   }

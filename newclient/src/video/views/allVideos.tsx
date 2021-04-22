@@ -16,12 +16,12 @@ const Home = () => {
   return (
     <div className="video_groups">
       {videoState.videos?.map((data, index) => (
-        <Link
-          key={index}
-          to={`/video/${data._id}`}
-          style={{ color: "white", textDecoration: "none" }}
-        >
-          <div className="card">
+        <div className="card">
+          <Link
+            key={index}
+            to={`/video/${data._id}`}
+            style={{ color: "white", textDecoration: "none" }}
+          >
             <div className="video">
               <span>12:02</span>
               <img
@@ -40,8 +40,8 @@ const Home = () => {
               <span className="info_user">{data.postedBy.username}</span>
               <span className="info_video">{data.view} views hace 10min</span>
             </div>
-          </div>
-        </Link>
+          </Link>
+        </div>
       ))}
     </div>
   );
