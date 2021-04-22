@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Header from "../components/header";
 import SideBar from "../components/sidebar";
-import Home from "../pages/home";
+import AllVideos from "../video/allVideos";
 import NotFound from "../pages/notFound";
 import "./App.scss";
 
@@ -17,7 +17,7 @@ const App = () => {
         <div className="app_content_content">
           <BrowserRouter>
             <Switch>
-              <Route exact path="/" component={Home} />
+              <Route exact path="/" component={AllVideos} />
               <Route component={NotFound} />
             </Switch>
           </BrowserRouter>

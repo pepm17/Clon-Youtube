@@ -1,21 +1,21 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { AppState } from "../../redux/rootStore";
-import "./index.scss";
-import { fetchVideos } from "../video/video.actions";
+import { AppState } from "../common/redux/rootStore";
+import { getAllVideos } from ".";
+import "./allVideos.scss";
 
 const Home = () => {
   const dispatch = useDispatch();
   const videoState = useSelector((state: AppState) => state.video);
 
   useEffect(() => {
-    dispatch(fetchVideos());
+    dispatch(getAllVideos());
   }, [dispatch]);
 
   return (
     <div className="video_groups">
-      {videoState.videos.map((data, index) => (
+      {videoState.videos?.map((data, index) => (
         <div className="card" key={index}>
           <div className="video">
             <span>12:02</span>
