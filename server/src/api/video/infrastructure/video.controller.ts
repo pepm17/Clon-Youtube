@@ -36,8 +36,8 @@ export class VideoController {
   @Post("/")
   @UseBefore(new MulterMiddleware().init())
   async createVideo(@Body() body: VideoCreateFilterValidator, @Req() req: any) {
-    body.video = req.files.video[0].path;
-    body.image = req.files.image[0].path;
+    body.video = req.files.video[0].filename;
+    body.image = req.files.image[0].filename;
     return { response: await this.videoService.createVideo(body) };
   }
 }

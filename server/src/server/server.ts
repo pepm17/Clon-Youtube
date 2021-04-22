@@ -8,6 +8,7 @@ import { createConnection } from "typeorm";
 import passport from "passport";
 import { PassportMiddleware } from "../middlewares/passport.middleware";
 import { Container } from "typedi";
+import express from "express";
 
 export default class Server {
   private port: number;
@@ -28,6 +29,7 @@ export default class Server {
           swaggerUi.serve,
           swaggerUi.setup(specs.default, { explorer: true })
         );
+        app.use(express.static("src/uploads"))
         app.use(passport.initialize());
         passport.use(
           Container.get<PassportMiddleware>(PassportMiddleware).strategy()
