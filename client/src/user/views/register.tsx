@@ -5,6 +5,7 @@ import { RegisterUser, registerUser } from "../";
 import { AppState } from "../../common/redux/rootStore";
 import { useHistory, Redirect } from "react-router-dom";
 import { useEffect } from "react";
+import "./register.scss";
 
 const Register = () => {
   const token = localStorage.getItem("token");
@@ -36,18 +37,24 @@ const Register = () => {
         <div className="register">
           <h3>Register</h3>
           <div className="register_form">
-            <form onSubmit={onSubmit}>
+            <form onSubmit={onSubmit} className="register_form">
               <input
                 type="text"
                 placeholder="Email"
                 {...register("email", { required: true })}
               />
+              {errors.email && (
+                <span style={{ color: "red" }}>This field is required</span>
+              )}
 
               <input
                 type="text"
                 placeholder="Username"
                 {...register("username", { required: true })}
               />
+              {errors.username && (
+                <span style={{ color: "red" }}>This field is required</span>
+              )}
 
               <input
                 type="text"
@@ -55,13 +62,18 @@ const Register = () => {
                 {...register("password", { required: true })}
               />
               {errors.password?.message}
+              {errors.password && (
+                <span style={{ color: "red" }}>This field is required</span>
+              )}
 
               <input
                 type="text"
                 placeholder="Confirm Password"
                 {...register("confirmPassword", { required: true })}
               />
-              {errors.confirmPassword?.message}
+              {errors.confirmPassword && (
+                <span style={{ color: "red" }}>This field is required</span>
+              )}
 
               <input type="submit" />
             </form>

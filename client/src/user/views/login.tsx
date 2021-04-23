@@ -6,9 +6,14 @@ import { useHistory, Redirect } from "react-router-dom";
 import { UserReturned, loginUser } from "../";
 import { AppState } from "../../common/redux/rootStore";
 import { LoginUser } from "../";
+import "./login.scss";
 
 const Login = () => {
-  const { handleSubmit, register } = useForm<UserReturned>();
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm<UserReturned>();
   const dipatch = useDispatch();
   const history = useHistory();
   const { response, loading, error } = useSelector(
@@ -38,21 +43,27 @@ const Login = () => {
       ) : (
         <div className="login">
           <h3>Login</h3>
-          <div className="login_form">
-            <form onSubmit={onSubmit}>
-              <input
-                type="text"
-                placeholder="UserName"
-                {...register("username", { required: true })}
-              />
-              <input
-                type="text"
-                placeholder="Password"
-                {...register("password", { required: true })}
-              />
-              <input type="submit" />
-            </form>
-          </div>
+          <form onSubmit={onSubmit} className="login_form">
+            <input
+              type="text"
+              placeholder="UserName"
+              {...register("username", { required: true })}
+            />
+            {errors.username && (
+              <span style={{ color: "red" }}>This field is required</span>
+            )}
+            <input
+              type="text"
+              placeholder="Password"
+              {...register("password", { required: true })}
+            />
+            {errors.password && (
+              <span style={{ color: "red", transition: "0.3s" }}>
+                This field is required
+              </span>
+            )}
+            <input type="submit" value="Login" />
+          </form>
         </div>
       )}
     </>
