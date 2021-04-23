@@ -36,6 +36,18 @@
         }
       }
 
+      &[type="file"] {
+        border-radius: 1rem;
+        opacity: 0.8;
+        &:focus,
+        &:hover {
+          cursor: pointer;
+          height: 2.5rem;
+          width: 23rem;
+          font-size: large;
+        }
+      }
+
       &[type="submit"] {
         background: rgb(100, 97, 97);
         font-weight: bold;

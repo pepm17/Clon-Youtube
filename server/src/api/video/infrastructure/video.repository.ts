@@ -14,7 +14,7 @@ export class VideoRepository implements IVideoRepository {
     return ((await this.repository
       .createQueryBuilder("video")
       .leftJoin("video.postedBy", "user")
-      .addSelect(["user.username", "user.email", "user._id"])
+      .addSelect(["user.username", "user.email", "user._id", "user.photo"])
       .getMany()) as unknown) as VideoDto[];
   }
   async findVideoById(_id: string | number): Promise<VideoDto | null> {
@@ -22,7 +22,7 @@ export class VideoRepository implements IVideoRepository {
       .createQueryBuilder("video")
       .where({ _id })
       .leftJoin("video.postedBy", "user")
-      .addSelect(["user.username", "user.email", "user._id"])
+      .addSelect(["user.username", "user.email", "user._id", "user.photo"])
       .getOne();
     if (!video) return null;
     video.manageViews();

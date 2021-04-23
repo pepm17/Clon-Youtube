@@ -4,11 +4,8 @@ import { AppState } from "../../common/redux/rootStore";
 import { getAllVideos } from "../";
 import "./allVideos.scss";
 import { Link } from "react-router-dom";
-import { User } from "../../user";
 
 const AllVideos = () => {
-  const userStorage = localStorage.getItem("user");
-  const user = userStorage ? (JSON.parse(userStorage) as User) : undefined;
   const dispatch = useDispatch();
   const videoState = useSelector((state: AppState) => state.video);
   useEffect(() => {
@@ -33,8 +30,8 @@ const AllVideos = () => {
             <div className="section_title">
               <img
                 src={
-                  user?.photo
-                    ? "http://localhost:4000/" + user.photo
+                  data.postedBy?.photo
+                    ? "http://localhost:4000/" + data.postedBy.photo
                     : "https://as01.epimg.net/meristation/imagenes/2021/02/12/noticias/1613123570_444626_1613123673_noticia_normal_recorte1.jpg"
                 }
                 alt="user"

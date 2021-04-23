@@ -26,6 +26,8 @@ const Register = () => {
   }, [user.response, redirect]);
 
   const onSubmit = handleSubmit((data) => {
+    data.photo = ((data.photo as unknown) as FileList)[0];
+
     dispatch(registerUser(data));
   });
 
@@ -55,6 +57,8 @@ const Register = () => {
               {errors.username && (
                 <span style={{ color: "red" }}>This field is required</span>
               )}
+
+              <input type="file" {...register("photo")} />
 
               <input
                 type="text"

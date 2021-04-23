@@ -14,14 +14,17 @@ import {
 export const registerUser = (registerUser: RegisterUser) => {
   return async (dispatch: Dispatch<UserActionsTypes>) => {
     dispatch(registerUserLoading());
+    const data = new FormData()
 
+    data.append("email", registerUser.email)
+    data.append("username", registerUser.username)
+    data.append("photo", registerUser.photo as File)
+    data.append("password", registerUser.password)
+    data.append("confirmPassword", registerUser.confirmPassword)
     try {
       const result = await fetch("http://localhost:4000/user/register", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(registerUser),
+        body: data,
       });
       await result.json();
       dispatch(registerUserSuccess());
@@ -43,9 +46,8 @@ export const loginUser = (user: UserReturned)=> {
         body: JSON.stringify(user),
       })
       const json = await response.json();
-      console.log(json);
-      if(json.statusCode){console.log("aui"); return dispatch(loginUserFail("Error in login"))};
-    dispatch(loginUserSuccess(json.response));
+      if(json.statusCode) return dispatch(loginUserFail("Error in login"));
+      dispatch(loginUserSuccess(json.response));
 
     } catch (error) {
       dispatch(loginUserFail("Error in login"));      

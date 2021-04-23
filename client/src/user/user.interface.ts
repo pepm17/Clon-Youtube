@@ -2,7 +2,7 @@ export interface User {
   _id: string;
   username: string;
   email: string;
-  photo: string;
+  photo: string | FileList | File;
 }
 
 export interface RegisterUser extends User{
