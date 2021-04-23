@@ -6,6 +6,7 @@ import AllVideos from "../video/views/allVideos";
 import NotFound from "../common/notFound";
 import "./App.scss";
 import WatchVideoPage from "../watchVideoPage/watchVideoPage";
+import Register from "../user/views/register";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
           <div className="app_content_content">
             <Switch>
               <Route exact path="/" component={AllVideos} />
+              <Route exact path="/user/register" component={Register} />
               <Route exact path="/video/:id" component={WatchVideoPage} />
               <Route component={NotFound} />
             </Switch>

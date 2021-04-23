@@ -23,7 +23,7 @@ const AllVideos = () => {
             <div className="video">
               <span>12:02</span>
               <img
-                src="https://as01.epimg.net/meristation/imagenes/2021/02/12/noticias/1613123570_444626_1613123673_noticia_normal_recorte1.jpg"
+                src={"http://localhost:4000/" + data.image}
                 alt="imageVideo"
               />
             </div>
