@@ -2,13 +2,20 @@ import React from "react";
 import { AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
 import { RiVideoAddLine } from "react-icons/ri";
 import { IoMdApps, IoMdNotificationsOutline } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./header.scss";
 import { User } from "../../user";
 
 const Header = () => {
   const userStorage = localStorage.getItem("user");
   const user = userStorage ? (JSON.parse(userStorage) as User) : undefined;
+  const history = useHistory();
+
+  const onSumitLogOut = () => {
+    localStorage.clear();
+    history.go(0);
+    history.push("/");
+  };
 
   return (
     <div className="header">
@@ -45,6 +52,7 @@ const Header = () => {
             <IoMdNotificationsOutline className="itemIcon" />
           </li>
         </ul>
+
         <img
           className="userImage"
           src={
@@ -54,6 +62,27 @@ const Header = () => {
           }
           alt=""
         />
+        {user ? (
+          <ul className="user_button">
+            <li onClick={onSumitLogOut}>Log Out</li>
+          </ul>
+        ) : (
+          <ul className="user_button">
+            <Link
+              style={{ color: "white", textDecoration: "none" }}
+              to="/user/register"
+            >
+              <li>Register</li>
+            </Link>
+
+            <Link
+              style={{ color: "white", textDecoration: "none" }}
+              to="/user/login"
+            >
+              <li>Login</li>
+            </Link>
+          </ul>
+        )}
       </div>
     </div>
   );

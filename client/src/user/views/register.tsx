@@ -3,9 +3,12 @@ import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { RegisterUser, registerUser } from "../";
 import { AppState } from "../../common/redux/rootStore";
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 import { useEffect } from "react";
+
 const Register = () => {
+  const token = localStorage.getItem("token");
+
   const dispatch = useDispatch();
   const user = useSelector((res: AppState) => res.user);
   const {
@@ -27,40 +30,44 @@ const Register = () => {
 
   return (
     <>
-      <div className="register">
-        <h3>Register</h3>
-        <div className="register_form">
-          <form onSubmit={onSubmit}>
-            <input
-              type="text"
-              placeholder="Email"
-              {...register("email", { required: true })}
-            />
+      {token ? (
+        <Redirect to="/" />
+      ) : (
+        <div className="register">
+          <h3>Register</h3>
+          <div className="register_form">
+            <form onSubmit={onSubmit}>
+              <input
+                type="text"
+                placeholder="Email"
+                {...register("email", { required: true })}
+              />
 
-            <input
-              type="text"
-              placeholder="Username"
-              {...register("username", { required: true })}
-            />
+              <input
+                type="text"
+                placeholder="Username"
+                {...register("username", { required: true })}
+              />
 
-            <input
-              type="text"
-              placeholder="Password"
-              {...register("password", { required: true })}
-            />
-            {errors.password?.message}
+              <input
+                type="text"
+                placeholder="Password"
+                {...register("password", { required: true })}
+              />
+              {errors.password?.message}
 
-            <input
-              type="text"
-              placeholder="Confirm Password"
-              {...register("confirmPassword", { required: true })}
-            />
-            {errors.confirmPassword?.message}
+              <input
+                type="text"
+                placeholder="Confirm Password"
+                {...register("confirmPassword", { required: true })}
+              />
+              {errors.confirmPassword?.message}
 
-            <input type="submit" />
-          </form>
+              <input type="submit" />
+            </form>
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 };

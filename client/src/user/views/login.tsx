@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 import { UserReturned, loginUser } from "../";
 import { AppState } from "../../common/redux/rootStore";
 import { LoginUser } from "../";
@@ -14,10 +14,9 @@ const Login = () => {
   const { response, loading, error } = useSelector(
     (state: AppState) => state.user
   );
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
-    console.log(response);
-
     if (!loading && error === "" && (response as LoginUser).token) {
       localStorage.setItem("token", (response as LoginUser).token);
       localStorage.setItem(
@@ -33,24 +32,30 @@ const Login = () => {
   const onSubmit = handleSubmit((data) => dipatch(loginUser(data)));
 
   return (
-    <div className="login">
-      <h3>Login</h3>
-      <div className="login_form">
-        <form onSubmit={onSubmit}>
-          <input
-            type="text"
-            placeholder="UserName"
-            {...register("username", { required: true })}
-          />
-          <input
-            type="text"
-            placeholder="Password"
-            {...register("password", { required: true })}
-          />
-          <input type="submit" />
-        </form>
-      </div>
-    </div>
+    <>
+      {token ? (
+        <Redirect to="/" />
+      ) : (
+        <div className="login">
+          <h3>Login</h3>
+          <div className="login_form">
+            <form onSubmit={onSubmit}>
+              <input
+                type="text"
+                placeholder="UserName"
+                {...register("username", { required: true })}
+              />
+              <input
+                type="text"
+                placeholder="Password"
+                {...register("password", { required: true })}
+              />
+              <input type="submit" />
+            </form>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
