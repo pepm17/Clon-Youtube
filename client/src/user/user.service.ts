@@ -5,6 +5,10 @@ import {
   RegisterUser,
   registerUserFail,
   registerUserSuccess,
+  UserReturned,
+  loginUserFail,
+  loginUserLoading,
+  loginUserSuccess
 } from ".";
 
 export const registerUser = (registerUser: RegisterUser) => {
@@ -26,3 +30,24 @@ export const registerUser = (registerUser: RegisterUser) => {
     }
   };
 };
+
+export const loginUser = (user: UserReturned)=> {
+  return async (dispatch: Dispatch<UserActionsTypes>)=>{
+    dispatch(loginUserLoading());
+    try {
+      const response = await fetch("http://localhost:4000/user/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      })
+      const json = await response.json();
+      if(json.statusCode !== 200) return dispatch(loginUserFail("Error in login"));
+    dispatch(loginUserSuccess(json.response));
+
+    } catch (error) {
+      dispatch(loginUserFail("Error in login"));      
+    }
+  }
+}

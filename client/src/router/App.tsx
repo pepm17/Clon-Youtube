@@ -7,6 +7,7 @@ import NotFound from "../common/notFound";
 import "./App.scss";
 import WatchVideoPage from "../watchVideoPage/watchVideoPage";
 import Register from "../user/views/register";
+import Login from "../user/views/login";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
             <Switch>
               <Route exact path="/" component={AllVideos} />
               <Route exact path="/user/register" component={Register} />
+              <Route exact path="/user/login" component={Login} />
               <Route exact path="/video/:id" component={WatchVideoPage} />
               <Route component={NotFound} />
             </Switch>

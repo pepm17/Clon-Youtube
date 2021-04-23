@@ -1,8 +1,8 @@
-import { UserActionsTypes, UserActionsConst } from ".";
+import { UserActionsTypes, UserActionsConst, LoginUser } from ".";
 
 interface UserState {
   loading: boolean;
-  response: boolean | string;
+  response: boolean | LoginUser;
   error: string;
 }
 

@@ -1,3 +1,5 @@
+import { LoginUser } from ".";
+
 export enum UserActionsConst {
     REGISTER_USER_LOADING = "REGISTER_USER_LOADING",
     REGISTER_USER_SUCCESS = "REGISTER_USER_SUCCESS",
@@ -9,7 +11,7 @@ export enum UserActionsConst {
 
 interface UserAsync {
     loading: boolean;
-    response: boolean | string;
+    response: boolean | LoginUser;
     error: string;
 }
 

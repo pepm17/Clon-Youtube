@@ -1,4 +1,5 @@
 import { UserActionsConst, UserActionsTypes } from ".";
+import { LoginUser } from "./user.interface";
 
 // Register use cases
 export const registerUserLoading = (): UserActionsTypes => ({
@@ -31,7 +32,7 @@ export const loginUserLoading = (): UserActionsTypes => ({
     error: ""
 })
 
-export const loginUserSuccess = (response: string): UserActionsTypes => ({
+export const loginUserSuccess = (response: LoginUser): UserActionsTypes => ({
     type: UserActionsConst.LOGIN_USER_SUCCESS,
     loading: false,
     response,
