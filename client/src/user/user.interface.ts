@@ -3,3 +3,8 @@ export interface User {
   username: string;
   email: string;
 }
+
+export interface RegisterUser extends User{
+  password: string;
+  confirmPassword: string;
+}
