@@ -1,18 +1,6 @@
 version: "3.8"
 
 services:
-  clon_youtube:
-    container_name: clon_youtube
-    volumes:
-      - .:/clon_youtube
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - 4000:4000
-    depends_on:
-      - db_postgres
-
   db_postgres:
     container_name: postgres_youtube_clon
     image: postgres
@@ -24,3 +12,15 @@ services:
       - ./pgdata:/varlib/postgresql/data
     ports:
       - "5432:5432"
+
+  clon_youtube:
+    container_name: clon_youtube
+    volumes:
+      - .:/clon_youtube
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 4000:4000
+    depends_on:
+      - db_postgres

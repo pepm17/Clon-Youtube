@@ -11,4 +11,5 @@ export class RegisterFilterValidator {
   @Match("password", { message: "validator:isMatchPassword" })
   @IsString({ message: "validator:isString" })
   confirmPassword!: string;
+  photo?: string;
 }

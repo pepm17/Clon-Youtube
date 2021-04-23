@@ -27,6 +27,9 @@ export class User {
   @Column({ nullable: false })
   password!: string;
 
+  @Column({ nullable: true })
+  photo?: string;
+
   @OneToMany(() => Video, (video) => video.postedBy, {
     onDelete: "CASCADE",
     nullable: true,

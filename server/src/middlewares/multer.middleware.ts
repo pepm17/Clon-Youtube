@@ -27,4 +27,11 @@ export class MulterMiddleware {
     ]);
     return init;
   }
+
+  user(){
+    const init = this.upload.fields([
+      {maxCount: 1, name: "photo"}
+    ]);
+    return init;
+  }
 }

@@ -1,3 +1,4 @@
+import "module-alias/register";
 import app from "../app";
 import swaggerUi from "swagger-ui-express";
 import * as specs from "../docs/swagger";

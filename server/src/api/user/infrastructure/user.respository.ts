@@ -1,8 +1,8 @@
 import { User } from ".";
 import { getRepository, Repository } from "typeorm";
-import { IUserRepository } from "../domain";
+import { IUserRepository } from "@user/domain";
 import { Service } from "typedi";
-import { ExistUser, LoginUser, UserDto } from "../domain";
+import { ExistUser, LoginUser, UserDto } from "@user/domain";
 import {
   LoginFilterValidator,
   RegisterFilterValidator,
@@ -31,8 +31,8 @@ export class UserRepository implements IUserRepository {
     if (!user) return null;
     const comparePassword = await user.comparePassword(loginUser.password);
     if (!comparePassword) return null;
-    const { _id, email, username } = user;
-    return ({ _id, email, username } as unknown) as LoginUser;
+    const { _id, email, username, photo } = user;
+    return ({ _id, email, username, photo } as unknown) as LoginUser;
   }
   async findById(id: string | number): Promise<LoginUser | null> {
     const user = await this.repository.findOne(id);

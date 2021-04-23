@@ -1,21 +1,24 @@
-import { Post, JsonController, Body } from "routing-controllers";
+import { Post, JsonController, Body, Req, UseBefore } from "routing-controllers";
 import { Inject } from "typedi";
-import { AuthService } from "../application";
-import { IAuthService } from "../domain";
+import { AuthService } from "@user/application";
+import { IAuthService } from "@user/domain";
 import {
   LoginFilterValidator,
   RegisterFilterValidator,
-} from "../../shared/validators/requestFilter";
+} from "@shared/validators/requestFilter";
+import { MulterMiddleware } from "@middlewares/index";
 
 @JsonController("/user")
 export class UserController {
   constructor(@Inject(() => AuthService) private authService: IAuthService) {}
   @Post("/register")
-  async login(@Body() body: RegisterFilterValidator) {
+  @UseBefore(new MulterMiddleware().user())
+  async register(@Body() body: RegisterFilterValidator, @Req() request: any) {
+    body.photo = request.files.photo[0].filename;
     return { response: await this.authService.register(body) };
   }
   @Post("/login")
-  async register(@Body() body: LoginFilterValidator) {
+  async login(@Body() body: LoginFilterValidator) {
     return { response: await this.authService.login(body) };
   }
 }
