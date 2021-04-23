@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Header from "../common/header";
-import SideBar from "../common/sidebar";
+import Header from "../common/header/header";
+import SideBar from "../common/sidebar/sideBar";
 import AllVideos from "../video/views/allVideos";
-import NotFound from "../common/notFound";
+import NotFound from "../common/notFound/notFound";
 import "./App.scss";
 import WatchVideoPage from "../watchVideoPage/watchVideoPage";
 import Register from "../user/views/register";

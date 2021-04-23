@@ -1,5 +1,5 @@
 import React from "react";
-import "./index.scss";
+import "./sidebar.scss";
 import { VscHome } from "react-icons/vsc";
 import { AiOutlineCompass, AiFillLike } from "react-icons/ai";
 import { RiVideoLine } from "react-icons/ri";

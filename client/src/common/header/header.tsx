@@ -3,7 +3,7 @@ import { AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
 import { RiVideoAddLine } from "react-icons/ri";
 import { IoMdApps, IoMdNotificationsOutline } from "react-icons/io";
 import { Link } from "react-router-dom";
-import "./index.scss";
+import "./header.scss";
 import { User } from "../../user";
 
 const Header = () => {
