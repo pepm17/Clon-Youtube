@@ -26,6 +26,7 @@ const Login = () => {
       );
 
       history.push("/");
+      history.go(0);
     }
   }, [history, loading, error, response]);
 

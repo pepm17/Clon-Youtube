@@ -2,6 +2,7 @@ export interface User {
   _id: string;
   username: string;
   email: string;
+  photo: string;
 }
 
 export interface RegisterUser extends User{
@@ -17,4 +18,5 @@ export interface UserReturned extends User {
 export interface LoginUser{
   user: User;
   token: string;
+  photo: string;
 }

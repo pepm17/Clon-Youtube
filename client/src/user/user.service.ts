@@ -43,7 +43,8 @@ export const loginUser = (user: UserReturned)=> {
         body: JSON.stringify(user),
       })
       const json = await response.json();
-      if(json.statusCode !== 200) return dispatch(loginUserFail("Error in login"));
+      console.log(json);
+      if(json.statusCode){console.log("aui"); return dispatch(loginUserFail("Error in login"))};
     dispatch(loginUserSuccess(json.response));
 
     } catch (error) {

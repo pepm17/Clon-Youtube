@@ -4,8 +4,12 @@ import { RiVideoAddLine } from "react-icons/ri";
 import { IoMdApps, IoMdNotificationsOutline } from "react-icons/io";
 import { Link } from "react-router-dom";
 import "./index.scss";
+import { User } from "../../user";
 
 const Header = () => {
+  const userStorage = localStorage.getItem("user");
+  const user = userStorage ? (JSON.parse(userStorage) as User) : undefined;
+
   return (
     <div className="header">
       <div className="logo">
@@ -43,7 +47,11 @@ const Header = () => {
         </ul>
         <img
           className="userImage"
-          src="https://1.bp.blogspot.com/-ntFNcVx7EOE/XtlPif68ppI/AAAAAAABdF4/OMJyqZoYPqsFLLHw2_wKmzwBPb9PAQ2ZwCK4BGAsYHg/s850/avatar-fb.png"
+          src={
+            user?.photo
+              ? "http://localhost:4000/" + user.photo
+              : "https://1.bp.blogspot.com/-ntFNcVx7EOE/XtlPif68ppI/AAAAAAABdF4/OMJyqZoYPqsFLLHw2_wKmzwBPb9PAQ2ZwCK4BGAsYHg/s850/avatar-fb.png"
+          }
           alt=""
         />
       </div>
