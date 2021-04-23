@@ -2,9 +2,9 @@ import {
   LoginFilterValidator,
   RegisterFilterValidator,
 } from "../../shared/validators/requestFilter";
-import { UserDto } from ".";
+import { UserDto, LoginUser } from ".";
 
 export interface IAuthService {
   register(registerUser: RegisterFilterValidator): Promise<UserDto>;
-  login(loginUser: LoginFilterValidator): Promise<string>;
+  login(loginUser: LoginFilterValidator): Promise<{token: string, user: LoginUser}>;
 }

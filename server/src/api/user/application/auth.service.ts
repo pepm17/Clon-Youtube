@@ -21,13 +21,14 @@ export class AuthService implements IAuthService {
       throw new BadRequestError("translation:messages.user.register.userExist");
     return user;
   }
-  async login(loginUser: LoginFilterValidator): Promise<string> {
+  async login(loginUser: LoginFilterValidator): Promise<{token: string, user: LoginUser}> {
     const user = await this.userRepository.login(loginUser);
     if (!user)
       throw new BadRequestError(
         "translation:messages.user.login.BadCredentials"
       );
-    return this.createToken(user);
+      const token = this.createToken(user);
+    return {token, user};
   }
   private createToken(loginUserToken: LoginUser): string {
     return jwt.sign({ loginUserToken }, JWT.Secret, {
