@@ -60,9 +60,34 @@
         width: 3rem;
         cursor: pointer;
 
+        .item_create_video {
+          visibility: hidden;
+          position: absolute;
+          background: black;
+
+          width: 8rem;
+          transition: 0.3s;
+          list-style: none;
+          display: flex;
+          flex-direction: row;
+          padding: 1rem;
+          align-items: center;
+
+          &:hover {
+            visibility: visible;
+            margin-top: 1rem;
+            background: rgba(128, 128, 128, 0.651);
+          }
+        }
+
         .itemIcon {
           width: 3rem;
           height: 5vh;
+        }
+
+        .create_video:hover ~ .item_create_video {
+          visibility: visible;
+          margin-top: 1rem;
         }
       }
     }
