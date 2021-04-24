@@ -2,6 +2,7 @@ import { AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
 import { RiVideoAddLine } from "react-icons/ri";
 import { IoMdApps, IoMdNotificationsOutline } from "react-icons/io";
 import style from "./header.module.scss";
+import ItemAuth from "./itemAuth";
 
 import Link from "next/link";
 
@@ -47,6 +48,10 @@ const Header = () => {
           src="https://1.bp.blogspot.com/-ntFNcVx7EOE/XtlPif68ppI/AAAAAAABdF4/OMJyqZoYPqsFLLHw2_wKmzwBPb9PAQ2ZwCK4BGAsYHg/s850/avatar-fb.png"
           alt=""
         />
+        <ul className={style.user_button}>
+          <ItemAuth />
+        </ul>
+
         {/*
             user?.photo
               ? "http://localhost:4000/" + user.photo
@@ -56,9 +61,7 @@ const Header = () => {
           <ul className="user_button">
             <li onClick={onSumitLogOut}>Log Out</li>
           </ul>
-        ) : (
-          <ItemAuth />
-        )*/}
+        ) :*/}
       </div>
     </div>
   );
