@@ -1,16 +1,7 @@
 import ReactPlayer from "react-player";
 import style from "./watchVideo.module.scss";
+import { Video } from "./video.interface";
 
-interface Video {
-  _id: string;
-  title: string;
-  description: string;
-  image: string;
-  video: string;
-  view: number;
-  postedBy: { username: string; photo: string };
-  createdAt: string;
-}
 const WatchVideo = ({ video }: { video: Video }) => {
   return (
     <>

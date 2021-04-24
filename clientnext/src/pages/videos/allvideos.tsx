@@ -1,17 +1,8 @@
 import Link from "next/link";
 import style from "./allVideos.module.scss";
+import { Video } from "./video.interface";
 
-interface Videos {
-  _id: string;
-  title: string;
-  description: string;
-  image: string;
-  video: string;
-  view: number;
-  postedBy: { username: string; photo: string };
-}
-
-const AllVideos = ({ videoState }: { videoState: Videos[] }) => {
+const AllVideos = ({ videoState }: { videoState: Video[] }) => {
   return (
     <div className={style.video_groups}>
       {videoState?.map((data, index) => (

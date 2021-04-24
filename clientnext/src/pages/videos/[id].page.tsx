@@ -1,17 +1,8 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import WatchVideo from "./watchVideo";
 import style from "./id.module.scss";
+import { Video } from "./video.interface";
 
-interface Video {
-  _id: string;
-  title: string;
-  description: string;
-  image: string;
-  video: string;
-  view: number;
-  postedBy: { username: string; photo: string };
-  createdAt: string;
-}
 const GetVideoById = ({ video }: { video: Video }) => {
   return (
     <div className={style.watch_page}>
