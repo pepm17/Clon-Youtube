@@ -1,0 +1,11 @@
+.watch_page {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  min-height: 100%;
+
+  .video_info {
+    width: 60%;
+    padding: 3rem;
+  }
+}

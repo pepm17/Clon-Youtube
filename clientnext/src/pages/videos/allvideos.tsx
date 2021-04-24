@@ -12,7 +12,6 @@ interface Videos {
 }
 
 const AllVideos = ({ videoState }: { videoState: Videos[] }) => {
-  console.log(videoState);
   return (
     <div className={style.video_groups}>
       {videoState?.map((data, index) => (
