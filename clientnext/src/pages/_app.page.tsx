@@ -3,6 +3,7 @@ import Header from "../components/header/header";
 import Head from "next/head";
 import style from "./_app.module.scss";
 import "./_app.scss";
+import SideBar from "../components/sidebar/sidebar";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -13,7 +14,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
       <div className={style.app}>
         <Header />
         <div className={style.app_content}>
-          <div className={style.app_sidebar}></div>
+          <div className={style.app_sidebar}>
+            <SideBar />
+          </div>
           <div className={style.app_content_content}>
             <Component {...pageProps} />
           </div>
