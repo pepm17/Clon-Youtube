@@ -1,0 +1,40 @@
+@import "../constants/style.module.scss";
+
+.app {
+  display: flex;
+  flex-direction: column;
+
+  &_content {
+    display: flex;
+    flex-direction: row;
+    min-height: 90vh;
+
+    .app_sidebar {
+      width: 20%;
+    }
+
+    &_content {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: $breackPoint-medium) {
+  .app {
+    &_content {
+      min-height: 100vh;
+    }
+  }
+}
+
+@media (max-width: $breackPoint-small) {
+  .app {
+    .app_sidebar {
+      width: 70px;
+    }
+
+    &_content {
+      min-height: 100vh;
+    }
+  }
+}
