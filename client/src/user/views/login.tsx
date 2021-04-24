@@ -53,7 +53,7 @@ const Login = () => {
               <span style={{ color: "red" }}>This field is required</span>
             )}
             <input
-              type="text"
+              type="password"
               placeholder="Password"
               {...register("password", { required: true })}
             />

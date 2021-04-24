@@ -41,7 +41,7 @@ const Register = () => {
           <div className="register_form">
             <form onSubmit={onSubmit} className="register_form">
               <input
-                type="text"
+                type="email"
                 placeholder="Email"
                 {...register("email", { required: true })}
               />
@@ -61,7 +61,7 @@ const Register = () => {
               <input type="file" {...register("photo")} />
 
               <input
-                type="text"
+                type="password"
                 placeholder="Password"
                 {...register("password", { required: true })}
               />
@@ -71,7 +71,7 @@ const Register = () => {
               )}
 
               <input
-                type="text"
+                type="password"
                 placeholder="Confirm Password"
                 {...register("confirmPassword", { required: true })}
               />

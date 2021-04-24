@@ -25,7 +25,8 @@
       transition: 0.5s;
       color: white;
 
-      &[type="text"] {
+      &[type="text"],
+      &[type="password"] {
         &:focus,
         &:hover {
           border-radius: 1rem;
