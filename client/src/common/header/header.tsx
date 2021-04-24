@@ -6,6 +6,7 @@ import { Link, useHistory } from "react-router-dom";
 import "./header.scss";
 import { User } from "../../user";
 import ItemAuth from "./itemAuth";
+import ItemCreateVideo from "./itemCreateVideo";
 
 const Header = () => {
   const userStorage = localStorage.getItem("user");
@@ -44,7 +45,8 @@ const Header = () => {
       <div className="items">
         <ul className="list">
           <li>
-            <RiVideoAddLine className="itemIcon" />
+            <RiVideoAddLine className="itemIcon create_video" />
+            <ItemCreateVideo />
           </li>
           <li>
             <IoMdApps className="itemIcon" />
