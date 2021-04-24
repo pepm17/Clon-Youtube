@@ -5,6 +5,7 @@ import { IoMdApps, IoMdNotificationsOutline } from "react-icons/io";
 import { Link, useHistory } from "react-router-dom";
 import "./header.scss";
 import { User } from "../../user";
+import ItemAuth from "./itemAuth";
 
 const Header = () => {
   const userStorage = localStorage.getItem("user");
@@ -67,21 +68,7 @@ const Header = () => {
             <li onClick={onSumitLogOut}>Log Out</li>
           </ul>
         ) : (
-          <ul className="user_button">
-            <Link
-              style={{ color: "white", textDecoration: "none" }}
-              to="/user/register"
-            >
-              <li>Register</li>
-            </Link>
-
-            <Link
-              style={{ color: "white", textDecoration: "none" }}
-              to="/user/login"
-            >
-              <li>Login</li>
-            </Link>
-          </ul>
+          <ItemAuth />
         )}
       </div>
     </div>

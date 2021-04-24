@@ -1,0 +1,32 @@
+.user_button {
+  transition: 0.3s;
+  position: absolute;
+  display: flex;
+  visibility: hidden;
+  flex-direction: column;
+  margin-top: 2rem;
+  right: 1rem;
+  list-style: none;
+  width: 9rem;
+  padding-left: 0;
+  font-weight: bold;
+
+  &:hover {
+    visibility: visible;
+    margin-top: 5rem;
+  }
+  li {
+    width: 100%;
+    padding: 1.3rem 0 0 0;
+    height: 3rem;
+    .icon_auth {
+      span {
+        padding-left: 1rem;
+      }
+    }
+  }
+  li:hover {
+    cursor: pointer;
+    background: rgba(128, 128, 128, 0.651);
+  }
+}
