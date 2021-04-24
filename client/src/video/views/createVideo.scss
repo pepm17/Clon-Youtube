@@ -1,0 +1,114 @@
+@import "../../constants/style.constant.scss";
+
+.submit_video {
+  margin: auto;
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid rgb(100, 97, 97);
+  padding: 2rem;
+  transition: 0.5s;
+  width: 70%;
+
+  &_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    textarea {
+      background: black;
+      margin: 1rem;
+      border: none;
+      width: 20rem;
+      transition: 0.5s;
+      color: white;
+
+      &:focus,
+      &:hover {
+        border-radius: 1rem;
+        border: 1px white solid;
+        height: 2.5rem;
+        width: 23rem;
+        font-size: large;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    input {
+      background: black;
+      margin: 1rem;
+      border: none;
+      height: 2rem;
+      width: 20rem;
+      transition: 0.5s;
+      color: white;
+
+      &[type="text"],
+      &[type="password"] {
+        &:focus,
+        &:hover {
+          border-radius: 1rem;
+          border: 1px white solid;
+          height: 2.5rem;
+          width: 23rem;
+          font-size: large;
+        }
+      }
+
+      &[type="file"] {
+        border-radius: 1rem;
+        opacity: 0.8;
+        &:focus,
+        &:hover {
+          cursor: pointer;
+          height: 2.5rem;
+          width: 23rem;
+          font-size: large;
+        }
+      }
+
+      &[type="submit"] {
+        background: rgb(100, 97, 97);
+        font-weight: bold;
+        border-radius: 1rem;
+        &:hover {
+          cursor: pointer;
+          height: 2.5rem;
+          width: 23rem;
+          font-size: large;
+        }
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}
+
+@media (max-width: $breackPoint-medium) {
+  .submit_video {
+    &_form {
+      width: 60%;
+      input,
+      textarea {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media (max-width: $breackPoint-small) {
+  .login {
+    &_form {
+      input,
+      textarea {
+        width: 100%;
+      }
+    }
+  }
+}

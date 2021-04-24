@@ -20,6 +20,14 @@ interface VideoStructure {
   video: string;
 }
 
+export interface CreateVideo {
+  title: string;
+  description: string;
+  image: File | FileList;
+  video: File | FileList;
+  postedBy: string;
+}
+
 export interface Video extends VideoStructure {
   postedBy: User;
   view: number;

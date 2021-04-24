@@ -38,50 +38,48 @@ const Register = () => {
       ) : (
         <div className="register">
           <h3>Register</h3>
-          <div className="register_form">
-            <form onSubmit={onSubmit} className="register_form">
-              <input
-                type="email"
-                placeholder="Email"
-                {...register("email", { required: true })}
-              />
-              {errors.email && (
-                <span style={{ color: "red" }}>This field is required</span>
-              )}
+          <form onSubmit={onSubmit} className="register_form">
+            <input
+              type="email"
+              placeholder="Email"
+              {...register("email", { required: true })}
+            />
+            {errors.email && (
+              <span style={{ color: "red" }}>This field is required</span>
+            )}
 
-              <input
-                type="text"
-                placeholder="Username"
-                {...register("username", { required: true })}
-              />
-              {errors.username && (
-                <span style={{ color: "red" }}>This field is required</span>
-              )}
+            <input
+              type="text"
+              placeholder="Username"
+              {...register("username", { required: true })}
+            />
+            {errors.username && (
+              <span style={{ color: "red" }}>This field is required</span>
+            )}
 
-              <input type="file" {...register("photo")} />
+            <input type="file" {...register("photo")} />
 
-              <input
-                type="password"
-                placeholder="Password"
-                {...register("password", { required: true })}
-              />
-              {errors.password?.message}
-              {errors.password && (
-                <span style={{ color: "red" }}>This field is required</span>
-              )}
+            <input
+              type="password"
+              placeholder="Password"
+              {...register("password", { required: true })}
+            />
+            {errors.password?.message}
+            {errors.password && (
+              <span style={{ color: "red" }}>This field is required</span>
+            )}
 
-              <input
-                type="password"
-                placeholder="Confirm Password"
-                {...register("confirmPassword", { required: true })}
-              />
-              {errors.confirmPassword && (
-                <span style={{ color: "red" }}>This field is required</span>
-              )}
+            <input
+              type="password"
+              placeholder="Confirm Password"
+              {...register("confirmPassword", { required: true })}
+            />
+            {errors.confirmPassword && (
+              <span style={{ color: "red" }}>This field is required</span>
+            )}
 
-              <input type="submit" />
-            </form>
-          </div>
+            <input type="submit" />
+          </form>
         </div>
       )}
     </>
