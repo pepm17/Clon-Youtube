@@ -62,6 +62,16 @@
       width: 60%;
       input {
         width: 100%;
+        &[type="text"],
+        &[type="password"],
+        &[type="submit"] {
+          width: 100%;
+
+          &:focus,
+          &:hover {
+            width: 100%;
+          }
+        }
       }
     }
   }
@@ -72,6 +82,15 @@
     &_form {
       input {
         width: 100%;
+        &[type="text"],
+        &[type="password"],
+        &[type="submit"] {
+          width: 100%;
+          &:focus,
+          &:hover {
+            width: 100%;
+          }
+        }
       }
     }
   }
