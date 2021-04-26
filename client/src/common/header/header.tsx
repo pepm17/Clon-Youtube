@@ -8,7 +8,11 @@ import { User } from "../../user";
 import ItemAuth from "./itemAuth";
 import ItemCreateVideo from "./itemCreateVideo";
 
-const Header = () => {
+interface AnimationSideBar {
+  show: () => void;
+}
+
+const Header = ({ show }: AnimationSideBar) => {
   const userStorage = localStorage.getItem("user");
   const user = userStorage ? (JSON.parse(userStorage) as User) : undefined;
   const history = useHistory();
@@ -22,7 +26,7 @@ const Header = () => {
   return (
     <div className="header">
       <div className="logo">
-        <AiOutlineMenu className="menu" />
+        <AiOutlineMenu className="menu" onClick={show} />
         <Link
           to={`/`}
           style={{ color: "white", textDecoration: "none", display: "flex" }}

@@ -8,7 +8,13 @@ import { BsGear } from "react-icons/bs";
 import { MdSubscriptions, MdVideoLibrary, MdHistory } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-const SideBar = () => {
+interface AnimationSideBar {
+  sideBarShow: boolean;
+}
+
+const SideBar = ({ sideBarShow }: AnimationSideBar) => {
+  const styleIcons = sideBarShow ? "icons" : "icons_hidden";
+
   return (
     <div className="sidebar">
       <ul className="items">
@@ -20,7 +26,7 @@ const SideBar = () => {
           }}
         >
           <li>
-            <div className="icons">
+            <div className={styleIcons}>
               <VscHome size={25} />
             </div>
             <span>Principal</span>
@@ -28,51 +34,51 @@ const SideBar = () => {
         </Link>
 
         <li>
-          <div className="icons">
+          <div className={styleIcons}>
             <AiOutlineCompass size={25} />
           </div>
           <span>Explorar</span>
         </li>
         <li>
-          <div className="icons">
+          <div className={styleIcons}>
             <MdSubscriptions size={25} />
           </div>
           <span>Subscriptions</span>
         </li>
         <hr />
         <li>
-          <div className="icons">
+          <div className={styleIcons}>
             <MdVideoLibrary size={25} />
           </div>
           <span>Biblioteca</span>
         </li>
         <li>
-          <div className="icons">
+          <div className={styleIcons}>
             <MdHistory size={25} />
           </div>
           <span>Historial</span>
         </li>
         <li>
-          <div className="icons">
+          <div className={styleIcons}>
             <RiVideoLine size={25} />
           </div>
           <span>Tus videos</span>
         </li>
         <li>
-          <div className="icons">
+          <div className={styleIcons}>
             <AiFillLike size={25} />
           </div>
           <span>Videos que me gustan</span>
         </li>
         <hr />
         <li>
-          <div className="icons">
+          <div className={styleIcons}>
             <BsGear size={25} />
           </div>
           <span>Configuración</span>
         </li>
         <li>
-          <div className="icons">
+          <div className={styleIcons}>
             <FiHelpCircle size={25} />
           </div>
           <span>Ayuda</span>

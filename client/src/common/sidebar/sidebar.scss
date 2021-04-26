@@ -19,6 +19,12 @@
 
       .icons {
         margin: 0.2rem;
+        transition: 0.5s;
+      }
+
+      .icons_hidden {
+        visibility: hidden;
+        transition: 0.5s;
       }
 
       span {
@@ -56,6 +62,9 @@
   .sidebar {
     .items {
       li {
+        .icons_hidden {
+          transition: 0.25s;
+        }
         span {
           display: none;
         }

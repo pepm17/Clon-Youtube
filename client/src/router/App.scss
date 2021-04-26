@@ -14,7 +14,14 @@ body {
     flex-direction: row;
     min-height: 90vh;
 
+    .app_sidebar_hidden {
+      visibility: hidden;
+      width: 0;
+      transition: 1s;
+    }
+
     .app_sidebar {
+      transition: 1s;
       width: 20%;
     }
 

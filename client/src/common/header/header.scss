@@ -78,6 +78,11 @@
       visibility: visible;
       margin-top: 5rem;
     }
+
+    .userImage:active ~ .user_button {
+      visibility: visible;
+      margin-top: 5rem;
+    }
   }
 }
 
