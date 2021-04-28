@@ -26,7 +26,7 @@ const Header = ({ show }: AnimationSideBar) => {
   return (
     <div className="header">
       <div className="logo">
-        <AiOutlineMenu className="menu" onClick={show} />
+        <AiOutlineMenu className="menu" onClick={show} data-testid="menu" />
         <Link
           to={`/`}
           style={{ color: "white", textDecoration: "none", display: "flex" }}
