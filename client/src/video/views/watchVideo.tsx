@@ -9,7 +9,7 @@ const WatchVideo = ({ video }: { video: Video }) => {
       <div className="video">
         <ReactPlayer
           url={"http://localhost:4000/" + video.video}
-          title="YouTube video player"
+          title={video.video}
           controls
           width="100%"
           height="100%"
@@ -19,7 +19,7 @@ const WatchVideo = ({ video }: { video: Video }) => {
         <h3>{video.title}</h3>
         <div className="video_repro_info_view_date">
           <span>{video.view + "views"}</span>
-          <span> {video.createdAt}</span>
+          <span> {video.createdAt.toString()}</span>
         </div>
         <hr style={{ backgroundColor: "grey" }} />
         <h4>{video.postedBy.username}</h4>
