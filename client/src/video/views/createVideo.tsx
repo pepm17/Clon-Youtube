@@ -38,7 +38,6 @@ const CreateVideo = () => {
     data.video = video;
     data.image = image;
     data.postedBy = userStorage._id;
-    console.log(data);
     dispatch(createVideo(data));
   });
   return (
