@@ -5,6 +5,17 @@ export interface UserLogin {
   confirmPassword: string;
 }
 
+export interface ReturnUserLogin {
+  id: string;
+  username: string;
+  email: string;
+}
+
+export interface UserWithToken {
+  token: string;
+  user: ReturnUserLogin;
+}
+
 export interface UserRegister {
   username: string;
   email: string;

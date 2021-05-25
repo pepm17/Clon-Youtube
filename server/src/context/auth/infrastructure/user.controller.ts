@@ -11,6 +11,7 @@ import { LoginFilterValidator, RegisterFilterValidator } from "./validators";
 import { MulterMiddleware } from "@middlewares/index";
 import { RegisterUserCommand } from "../application/registerUser";
 import { CommandQueryBus } from "../../shared/domain";
+import { LoginUserCommand } from "../application/loginUser";
 
 @JsonController("/user")
 export class UserController {
@@ -29,6 +30,8 @@ export class UserController {
 
   @Post("/login")
   async login(@Body() body: LoginFilterValidator) {
-    // return { response: await this.authService.login(body) };
+    const command = LoginUserCommand.create(body);
+    const result = await this.commandBus.handle(command);
+    return { response: result };
   }
 }

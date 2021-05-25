@@ -6,6 +6,10 @@ import { NotFoundError } from "routing-controllers";
 import Container, { ContainerInstance } from "typedi";
 import { Command, CommandQueryBus, Handler, Query } from "../domain";
 import { TypeOrmUserRepository } from "../../auth/infrastructure";
+import {
+  LoginUserCommandHandler,
+  LoginUserUseCase,
+} from "../../auth/application/loginUser";
 
 export class TypediCommandBus implements CommandQueryBus {
   static instace: TypediCommandBus;
@@ -45,6 +49,15 @@ export class TypediCommandBus implements CommandQueryBus {
       "RegisterUserCommand",
       new RegisterUserCommandHandler(
         new RegisterUserUseCase(
+          Container.get<TypeOrmUserRepository>(TypeOrmUserRepository)
+        )
+      )
+    );
+
+    this.container.set(
+      "LoginUserCommand",
+      new LoginUserCommandHandler(
+        new LoginUserUseCase(
           Container.get<TypeOrmUserRepository>(TypeOrmUserRepository)
         )
       )
