@@ -8,7 +8,7 @@ const app: express.Application = createExpressServer({
   defaultErrorHandler: false,
   classTransformer: true,
   validation: true,
-  controllers: [resolve(__dirname, "./**/*controller{.ts,.js}")], // we specify controllers we want to use
+  controllers: [resolve(__dirname, "./context/**/*controller{.ts,.js}")], // we specify controllers we want to use
   middlewares: [resolve(__dirname, "./middlewares/**/*{.ts,.js}")], // we specify middlewares we want to use
 });
 

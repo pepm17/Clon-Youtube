@@ -1,13 +1,17 @@
+import { UserRepository } from "@user/infrastructure";
 import { Inject, Service } from "typedi";
 import { IAuthService, IUserRepository } from "@user/domain";
 import { UserDto, LoginUser } from "@user/domain";
 import { BadRequestError } from "routing-controllers";
 import jwt from "jsonwebtoken";
-
+import {
+  LoginFilterValidator,
+  RegisterFilterValidator,
+} from "@shared/validators/requestFilter";
 import { JWT } from "@constants/jwt.constant";
 @Service()
-export class AuthService {
-  /*constructor(
+export class AuthService implements IAuthService {
+  constructor(
     @Inject(() => UserRepository)
     private readonly userRepository: IUserRepository
   ) {}
@@ -30,5 +34,5 @@ export class AuthService {
     return jwt.sign({ loginUserToken }, JWT.Secret, {
       expiresIn: 86400,
     });
-  }*/
+  }
 }

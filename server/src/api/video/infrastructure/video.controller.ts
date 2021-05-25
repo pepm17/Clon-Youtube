@@ -8,10 +8,7 @@ import {
   Req,
 } from "routing-controllers";
 import { Inject } from "typedi";
-import {
-  FindByIdValidator,
-  VideoCreateFilterValidator,
-} from "../../shared/validators/requestFilter";
+import { FindByIdValidator, VideoCreateFilterValidator } from "./validators";
 import { IVideoService } from "../domain";
 import { MulterMiddleware } from "../../../middlewares";
 import { VideoService } from "../application";

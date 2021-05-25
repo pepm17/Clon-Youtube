@@ -2,7 +2,6 @@ import { IVideoRepository, VideoDto } from "../domain";
 import { Video } from "./video.model";
 import { Inject } from "typedi";
 import { getRepository, Repository } from "typeorm";
-import { VideoCreateFilterValidator } from "../../shared/validators/requestFilter";
 
 @Inject()
 export class VideoRepository implements IVideoRepository {
@@ -38,7 +37,7 @@ export class VideoRepository implements IVideoRepository {
       .getMany();
     return (video as unknown) as VideoDto[];
   }
-  async createVideo(video: VideoCreateFilterValidator): Promise<VideoDto> {
+  async createVideo(video: any): Promise<VideoDto> {
     return ((await this.repository.save(
       (video as unknown) as Video
     )) as unknown) as VideoDto;

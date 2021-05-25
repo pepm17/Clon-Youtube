@@ -6,22 +6,29 @@ import {
   UseBefore,
 } from "routing-controllers";
 import { Inject } from "typedi";
-import { AuthService } from "@user/application";
-import { IAuthService } from "@user/domain";
+import { TypediCommandBus } from "../../shared/infrastructure/typediCommandBus";
 import { LoginFilterValidator, RegisterFilterValidator } from "./validators";
 import { MulterMiddleware } from "@middlewares/index";
+import { RegisterUserCommand } from "../application/registerUser";
+import { CommandQueryBus } from "../../shared/domain";
 
 @JsonController("/user")
 export class UserController {
-  constructor(@Inject(() => AuthService) private authService: IAuthService) {}
+  constructor(
+    private commandBus: CommandQueryBus = TypediCommandBus.getInstance()
+  ) {}
+
   @Post("/register")
   @UseBefore(new MulterMiddleware().user())
   async register(@Body() body: RegisterFilterValidator, @Req() request: any) {
     body.photo = request.files.photo[0].filename;
-    return { response: await this.authService.register(body) };
+    const command = RegisterUserCommand.create(body.toJson());
+    await this.commandBus.handle(command);
+    return { response: "User register succesfully" };
   }
+
   @Post("/login")
   async login(@Body() body: LoginFilterValidator) {
-    return { response: await this.authService.login(body) };
+    // return { response: await this.authService.login(body) };
   }
 }
