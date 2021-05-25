@@ -25,7 +25,6 @@ export class TypeOrmUserRepository implements UserRepository {
     const { email, username } = loginUser.toValidateIfExist();
 
     const user = await this.existUser(username, email);
-
     if (!user) return null;
 
     return AuthEntity.create(user);

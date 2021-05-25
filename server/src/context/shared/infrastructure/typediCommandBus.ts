@@ -1,15 +1,15 @@
 import {
   RegisterUserCommandHandler,
   RegisterUserUseCase,
-} from "../../auth/application/registerUser";
+} from "../../authContext/application/registerUser";
 import { NotFoundError } from "routing-controllers";
 import Container, { ContainerInstance } from "typedi";
 import { Command, CommandQueryBus, Handler, Query } from "../domain";
-import { TypeOrmUserRepository } from "../../auth/infrastructure";
+import { TypeOrmUserRepository } from "../../authContext/infrastructure";
 import {
   LoginUserCommandHandler,
   LoginUserUseCase,
-} from "../../auth/application/loginUser";
+} from "../../authContext/application/loginUser";
 
 export class TypediCommandBus implements CommandQueryBus {
   static instace: TypediCommandBus;
