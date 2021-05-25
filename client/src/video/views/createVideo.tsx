@@ -1,6 +1,5 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
 import { createVideo } from "../video.service";
 import { Redirect, useHistory } from "react-router-dom";
 import { CreateVideo as CreateVideoInterface } from "../video.types";
@@ -8,16 +7,26 @@ import "./createVideo.scss";
 import { User } from "../../user";
 import { useEffect } from "react";
 import { AppState } from "../../common/redux/rootStore";
+import { connect } from "react-redux";
+import { VideoStateStructure } from "../video.reducer";
 
-const CreateVideo = () => {
+interface StateProps {
+  video: VideoStateStructure;
+}
+
+interface DispatchProps {
+  createVideoDispatch: (data: CreateVideoInterface) => void;
+}
+
+type Props = StateProps & DispatchProps;
+
+const CreateVideo = ({ video: { create }, createVideoDispatch }: Props) => {
   const history = useHistory();
   const token = localStorage.getItem("token");
   const userLocalStorage = localStorage.getItem("user");
   const userStorage: User = userLocalStorage
     ? JSON.parse(userLocalStorage)
     : null;
-  const dispatch = useDispatch();
-  const { create } = useSelector((data: AppState) => data.video);
   const {
     register,
     handleSubmit,
@@ -26,10 +35,10 @@ const CreateVideo = () => {
 
   useEffect(() => {
     if (create) {
-      history.go(0);
       history.push("/");
+      history.go(0);
     }
-  });
+  }, [create, history]);
 
   const onSubmit = handleSubmit((data) => {
     const image = (data.image as FileList)[0];
@@ -38,7 +47,7 @@ const CreateVideo = () => {
     data.video = video;
     data.image = image;
     data.postedBy = userStorage._id;
-    dispatch(createVideo(data));
+    createVideoDispatch(data);
   });
   return (
     <>
@@ -88,4 +97,13 @@ const CreateVideo = () => {
   );
 };
 
-export default CreateVideo;
+const mapStateToProps = (state: AppState) => ({
+  video: state.video,
+});
+
+const mapDispatchToProps = (dispatch: any) => ({
+  createVideoDispatch: (data: CreateVideoInterface) =>
+    dispatch(createVideo(data)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateVideo);

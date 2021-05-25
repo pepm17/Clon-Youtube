@@ -1,22 +1,31 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useParams, Redirect } from "react-router-dom";
 import { AppState } from "../../common/redux/rootStore";
 import { getVideoById } from "../";
 import WatchVideo from "./watchVideo";
+import { connect } from "react-redux";
+import { VideoStateStructure } from "../video.reducer";
 
 interface VideoId {
   id: string;
 }
 
-const GetVideoById = () => {
+interface StateProps {
+  video: VideoStateStructure;
+}
+
+interface DispatchProps {
+  getByIdVideo: (id: string) => void;
+}
+
+type Props = StateProps & DispatchProps;
+
+const GetVideoById = ({ getByIdVideo, video }: Props) => {
   const { id } = useParams<VideoId>();
-  const dispatch = useDispatch();
-  const video = useSelector((state: AppState) => state.video);
 
   useEffect(() => {
-    dispatch(getVideoById(id));
-  }, [id, dispatch]);
+    getByIdVideo(id);
+  }, [id, getByIdVideo]);
 
   return (
     <>
@@ -30,4 +39,12 @@ const GetVideoById = () => {
   );
 };
 
-export default GetVideoById;
+const mapStateToProps = (state: AppState) => ({
+  video: state.video,
+});
+
+const mapDispatchToProps = (dispatch: any) => ({
+  getByIdVideo: (id: string): void => dispatch(getVideoById(id)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(GetVideoById);

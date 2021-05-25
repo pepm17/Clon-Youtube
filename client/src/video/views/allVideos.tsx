@@ -1,20 +1,28 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { AppState } from "../../common/redux/rootStore";
 import { getAllVideos } from "../";
+import { connect } from "react-redux";
 import "./allVideos.scss";
 import { Link } from "react-router-dom";
+import { Video } from "../video.types";
 
-const AllVideos = () => {
-  const dispatch = useDispatch();
-  const videoState = useSelector((state: AppState) => state.video);
+interface StateProps {
+  videos: Video[];
+}
+
+interface DispatchProps {
+  getAllVideosDispatch: () => void;
+}
+
+type Props = StateProps & DispatchProps;
+const AllVideos = ({ getAllVideosDispatch, videos }: Props) => {
   useEffect(() => {
-    dispatch(getAllVideos());
-  }, [dispatch]);
+    getAllVideosDispatch();
+  }, [getAllVideosDispatch]);
 
   return (
     <div className="video_groups">
-      {videoState.videos?.map((data, index) => (
+      {videos.map((data, index) => (
         <div key={index} className="card">
           <Link
             to={`/video/${data._id}`}
@@ -49,4 +57,12 @@ const AllVideos = () => {
   );
 };
 
-export default AllVideos;
+const mapStateToProps = (state: AppState) => ({
+  videos: state.video.videos,
+});
+
+const mapDispatchToProps = (dispatch: any) => ({
+  getAllVideosDispatch: (): void => dispatch(getAllVideos()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AllVideos);
