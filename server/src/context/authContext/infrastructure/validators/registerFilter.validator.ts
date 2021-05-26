@@ -1,5 +1,5 @@
 import { IsEmail, IsString } from "class-validator";
-import { Match } from "../../../../api/shared/utils/decorators/match.decorator";
+import { Match } from "../../../../utils/decorators/match.decorator";
 
 export class RegisterFilterValidator {
   @IsEmail({}, { message: "validator:isEmail" })
@@ -19,7 +19,7 @@ export class RegisterFilterValidator {
       username: this.username,
       password: this.password,
       confirmPassword: this.confirmPassword,
-      photo: this.password,
+      photo: this.photo,
     };
   }
 }

@@ -23,11 +23,10 @@ export class VideoEntity {
 
   static create(video: any): VideoEntity {
     const postedBy = {
-      id: video.postedBy.id,
+      id: video.postedBy,
       username: "",
       photo: "",
     };
-    console.log(postedBy);
     return new this(
       new Id(""),
       new Title(video.title),

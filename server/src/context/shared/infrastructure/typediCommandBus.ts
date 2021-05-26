@@ -23,6 +23,10 @@ import {
   FindVideoByIdQueryHandler,
   FindVideoByIdUseCase,
 } from "../../manageVideoContext/video/application/findVideoById";
+import {
+  FindUserByIdQueryHandler,
+  FindUserByIdUseCase,
+} from "../../authContext/application/findById";
 
 export class TypediCommandBus implements CommandQueryBus {
   static instace: TypediCommandBus;
@@ -69,6 +73,15 @@ export class TypediCommandBus implements CommandQueryBus {
       new FindVideoByIdQueryHandler(
         new FindVideoByIdUseCase(
           Container.get<TypeOrmVideoRepository>(TypeOrmVideoRepository)
+        )
+      )
+    );
+
+    this.container.set(
+      "FindUserByIdQuery",
+      new FindUserByIdQueryHandler(
+        new FindUserByIdUseCase(
+          Container.get<TypeOrmUserRepository>(TypeOrmUserRepository)
         )
       )
     );

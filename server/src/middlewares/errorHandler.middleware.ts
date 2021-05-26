@@ -3,7 +3,7 @@ import {
   Middleware,
   ExpressErrorMiddlewareInterface,
 } from "routing-controllers";
-import { IRequest } from "../api/shared/request.interface";
+import { IRequest } from "../context/shared/request.interface";
 
 @Middleware({ type: "after", priority: 1 })
 export class ErrorHandlerMiddleware implements ExpressErrorMiddlewareInterface {

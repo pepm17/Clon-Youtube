@@ -1,14 +1,15 @@
 import { Strategy, ExtractJwt, StrategyOptions } from "passport-jwt";
-import { IUserService } from "../api/user/domain";
 import { Inject } from "typedi";
 import { JWT } from "../constants/jwt.constant";
-import logger from "../api/shared/utils/logger/logger.util";
-import { UserService } from "../api/user/application";
+import logger from "../utils/logger/logger.util";
+import { CommandQueryBus } from "../context/shared/domain";
+import { TypediCommandBus } from "../context/shared/infrastructure/typediCommandBus";
+import { FindUserByIdQuery } from "../context/authContext/application/findById";
 
 export class PassportMiddleware {
   private opts: StrategyOptions;
   constructor(
-    @Inject(() => UserService) private readonly userService: IUserService
+    private commandBus: CommandQueryBus = TypediCommandBus.getInstance()
   ) {
     this.opts = {
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
@@ -18,8 +19,10 @@ export class PassportMiddleware {
   strategy(): Strategy {
     return new Strategy(this.opts, async (payload, done) => {
       try {
-        const user = await this.userService.findById(payload._id);
+        const query = new FindUserByIdQuery(payload.id);
+        const user = await this.commandBus.handle(query);
         if (user) return done(null, user);
+        console.log(user);
         return done(null, false);
       } catch (error) {
         logger.error(error);

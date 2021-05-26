@@ -4,7 +4,7 @@ import swaggerUi from "swagger-ui-express";
 import * as specs from "../docs/swagger";
 import morgan from "morgan";
 import { LOG_FORMAT } from "../constants/environments.constant";
-import { stream } from "../api/shared/utils/logger/logger.util";
+import { stream } from "../utils/logger/logger.util";
 import { createConnection } from "typeorm";
 import passport from "passport";
 import { PassportMiddleware } from "../middlewares/passport.middleware";
@@ -30,7 +30,7 @@ export default class Server {
           swaggerUi.serve,
           swaggerUi.setup(specs.default, { explorer: true })
         );
-        app.use(express.static("src/uploads"))
+        app.use(express.static("src/uploads"));
         app.use(passport.initialize());
         passport.use(
           Container.get<PassportMiddleware>(PassportMiddleware).strategy()

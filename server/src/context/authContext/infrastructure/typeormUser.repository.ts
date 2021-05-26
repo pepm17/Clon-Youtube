@@ -2,6 +2,7 @@ import { User } from "../../shared/infrastructure/db/typeorm";
 import { getRepository, Repository } from "typeorm";
 import { Service } from "typedi";
 import { UserRepository, AuthEntity } from "../domain";
+import { Id } from "../domain/valueObjects";
 
 @Service("UserRepository")
 export class TypeOrmUserRepository implements UserRepository {
@@ -9,6 +10,11 @@ export class TypeOrmUserRepository implements UserRepository {
 
   constructor() {
     this.repository = getRepository(User);
+  }
+  async findById(criteria: Id): Promise<AuthEntity | null> {
+    const user = await this.repository.findOne(criteria.getValue());
+    if (!user) return null;
+    return AuthEntity.login(user);
   }
 
   async register(registerUser: AuthEntity): Promise<boolean> {
