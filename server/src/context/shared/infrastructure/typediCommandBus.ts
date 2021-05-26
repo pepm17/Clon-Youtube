@@ -10,6 +10,11 @@ import {
   LoginUserCommandHandler,
   LoginUserUseCase,
 } from "../../authContext/application/loginUser";
+import {
+  CreateVideoCommandHandler,
+  CreateVideoUseCase,
+} from "../../manageVideoContext/video/application/createVideo";
+import { TypeOrmVideoRepository } from "../../manageVideoContext/video/infrastructure";
 
 export class TypediCommandBus implements CommandQueryBus {
   static instace: TypediCommandBus;
@@ -59,6 +64,24 @@ export class TypediCommandBus implements CommandQueryBus {
       new LoginUserCommandHandler(
         new LoginUserUseCase(
           Container.get<TypeOrmUserRepository>(TypeOrmUserRepository)
+        )
+      )
+    );
+
+    this.container.set(
+      "LoginUserCommand",
+      new LoginUserCommandHandler(
+        new LoginUserUseCase(
+          Container.get<TypeOrmUserRepository>(TypeOrmUserRepository)
+        )
+      )
+    );
+
+    this.container.set(
+      "CreateVideoCommand",
+      new CreateVideoCommandHandler(
+        new CreateVideoUseCase(
+          Container.get<TypeOrmVideoRepository>(TypeOrmVideoRepository)
         )
       )
     );

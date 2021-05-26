@@ -39,8 +39,4 @@ export class Video {
 
   @UpdateDateColumn({ type: "timestamp", nullable: true })
   updatedAt!: Date;
-
-  manageViews() {
-    this.view += 1;
-  }
 }
