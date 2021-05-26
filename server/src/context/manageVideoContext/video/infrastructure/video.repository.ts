@@ -3,6 +3,7 @@ import { Video } from "../../../shared/infrastructure/db/typeorm";
 import { Inject } from "typedi";
 import { getRepository, Repository } from "typeorm";
 import { VideoEntity } from "../domain/video.entity";
+import { Id } from "../domain/valueObjects";
 
 @Inject()
 export class TypeOrmVideoRepository implements VideoRepository {
@@ -17,6 +18,21 @@ export class TypeOrmVideoRepository implements VideoRepository {
       .addSelect(["user.username", "user.id", "user.photo"])
       .getMany();
     return VideoEntity.createFromArray(videos);
+  }
+  async findVideoById(id: Id): Promise<VideoEntity | null> {
+    const video = await this.repository
+      .createQueryBuilder("video")
+      .where({ id: id.getValue() })
+      .leftJoin("video.postedBy", "user")
+      .addSelect(["user.username", "user.id", "user.photo"])
+      .getOne();
+    if (!video) return null;
+    return VideoEntity.createToReturn(video);
+  }
+
+  updateVideo(video: VideoEntity): void {
+    const { id, ...rest } = video.toUpdate();
+    this.repository.update(id, rest);
   }
   /*async findAllVideos(): Promise<VideoDto[]> {
     return ((await this.repository
@@ -49,7 +65,6 @@ export class TypeOrmVideoRepository implements VideoRepository {
 
   createVideo(video: VideoEntity): void {
     const data = this.repository.create((video.toCreate() as unknown) as Video);
-    console.log(data);
     this.repository.save(data);
   }
 }

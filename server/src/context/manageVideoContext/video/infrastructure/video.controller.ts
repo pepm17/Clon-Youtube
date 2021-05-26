@@ -13,6 +13,7 @@ import { CommandQueryBus } from "../../../shared/domain";
 import { TypediCommandBus } from "../../../shared/infrastructure/typediCommandBus";
 import { CreateVideoCommand } from "../application/createVideo";
 import { FindAllVideosQuery } from "../application/findAllVideos";
+import { FindVideoByIdQuery } from "../application/findVideoById";
 
 @JsonController("/video")
 export class VideoController {
@@ -25,10 +26,12 @@ export class VideoController {
     const data = await this.commandBus.handle(query);
     return { response: data };
   }
-  /*@Get("/:id")
+  @Get("/:id")
   async getById(@Params() id: FindByIdValidator) {
-    return { response: await this.videoService.findVideoById(id.id) };
-  }*/
+    const query = new FindVideoByIdQuery(id.id);
+    const data = await this.commandBus.handle(query);
+    return { response: data };
+  }
   /*@Get("/user/:id")
   async getMyAllVideos(@Params() id: FindByIdValidator) {
     return { response: await this.videoService.findMyAllVideos(id.id) };

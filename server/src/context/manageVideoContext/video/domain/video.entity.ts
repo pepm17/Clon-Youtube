@@ -23,12 +23,29 @@ export class VideoEntity {
 
   static create(video: any): VideoEntity {
     const postedBy = {
-      id: video.postedBy,
+      id: video.postedBy.id,
       username: "",
       photo: "",
     };
+    console.log(postedBy);
     return new this(
       new Id(""),
+      new Title(video.title),
+      new Description(video.description),
+      PostedBy.create({ ...postedBy }),
+      new Image(video.image),
+      new Video(video.video),
+      new View(0),
+      new Dates(new Date(), new Date())
+    );
+  }
+
+  static createToReturn(video: any): VideoEntity {
+    const postedBy = {
+      ...video.postedBy,
+    };
+    return new this(
+      new Id(video.id),
       new Title(video.title),
       new Description(video.description),
       PostedBy.create({ ...postedBy }),
@@ -58,11 +75,26 @@ export class VideoEntity {
     });
   }
 
+  manageViews() {
+    this.view = new View(this.view.getValue() + 1);
+  }
+
   toCreate() {
     return {
       title: this.title.getValue(),
       description: this.description.getValue(),
       postedBy: this.postedBy.toJson().id,
+      image: this.image.getValue(),
+      video: this.video.getValue(),
+      view: this.view.getValue(),
+    };
+  }
+
+  toUpdate() {
+    return {
+      id: this.id.getValue(),
+      title: this.title.getValue(),
+      description: this.description.getValue(),
       image: this.image.getValue(),
       video: this.video.getValue(),
       view: this.view.getValue(),
