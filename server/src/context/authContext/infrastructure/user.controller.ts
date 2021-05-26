@@ -5,7 +5,6 @@ import {
   Req,
   UseBefore,
 } from "routing-controllers";
-import { Inject } from "typedi";
 import { TypediCommandBus } from "../../shared/infrastructure/typediCommandBus";
 import { LoginFilterValidator, RegisterFilterValidator } from "./validators";
 import { MulterMiddleware } from "@middlewares/index";

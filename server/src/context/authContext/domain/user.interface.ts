@@ -8,7 +8,6 @@ export interface UserLogin {
 export interface ReturnUserLogin {
   id: string;
   username: string;
-  email: string;
 }
 
 export interface UserWithToken {

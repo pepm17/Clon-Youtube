@@ -79,8 +79,6 @@ export class AuthEntity {
     return {
       id: this.id.getValue(),
       username: this.username.getValue(),
-      email: this.email.getValue(),
-      password: this.photo.getValue(),
     };
   }
 }
