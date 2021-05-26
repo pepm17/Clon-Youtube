@@ -15,6 +15,10 @@ import {
   CreateVideoUseCase,
 } from "../../manageVideoContext/video/application/createVideo";
 import { TypeOrmVideoRepository } from "../../manageVideoContext/video/infrastructure";
+import {
+  FindAllVideosQueryHandler,
+  FindAllVideosUseCase,
+} from "../../manageVideoContext/video/application/findAllVideos";
 
 export class TypediCommandBus implements CommandQueryBus {
   static instace: TypediCommandBus;
@@ -47,7 +51,16 @@ export class TypediCommandBus implements CommandQueryBus {
     return handler.handler(commandOrQuery);
   }
 
-  private addQueryHandler() {}
+  private addQueryHandler() {
+    this.container.set(
+      "FindAllVideosQuery",
+      new FindAllVideosQueryHandler(
+        new FindAllVideosUseCase(
+          Container.get<TypeOrmVideoRepository>(TypeOrmVideoRepository)
+        )
+      )
+    );
+  }
 
   private addCommandHandler() {
     this.container.set(

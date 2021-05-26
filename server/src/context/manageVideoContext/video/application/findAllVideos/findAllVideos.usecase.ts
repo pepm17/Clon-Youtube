@@ -1,3 +1,9 @@
+import { VideoRepository, VideoEntity } from "../../domain";
+
 export class FindAllVideosUseCase {
-  async getAllVideos() {}
+  constructor(private repository: VideoRepository) {}
+
+  async getAllVideos(): Promise<VideoEntity[]> {
+    return this.repository.findAllVideos();
+  }
 }

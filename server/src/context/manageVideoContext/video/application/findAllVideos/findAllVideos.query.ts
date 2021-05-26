@@ -1,3 +1,3 @@
-import { Query } from "../../../shared/domain";
+import { Query } from "../../../../shared/domain";
 
 export class FindAllVideosQuery implements Query {}

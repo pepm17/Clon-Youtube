@@ -14,7 +14,7 @@ export class User {
     name: "id",
     type: "integer",
   })
-  _id!: number;
+  id!: number;
 
   @Column({ nullable: false, unique: true })
   username!: string;

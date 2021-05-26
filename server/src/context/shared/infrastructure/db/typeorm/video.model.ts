@@ -5,6 +5,7 @@ import {
   UpdateDateColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
+  JoinColumn,
 } from "typeorm";
 import { User } from ".";
 
@@ -14,7 +15,7 @@ export class Video {
     name: "id",
     type: "integer",
   })
-  _id!: number;
+  id!: number;
 
   @Column({ nullable: false })
   title!: string;
@@ -32,6 +33,7 @@ export class Video {
   view!: number;
 
   @ManyToOne(() => User, (user) => user.videos)
+  @JoinColumn({ name: "postedBy" })
   postedBy!: User;
 
   @CreateDateColumn({ type: "timestamp", nullable: true })

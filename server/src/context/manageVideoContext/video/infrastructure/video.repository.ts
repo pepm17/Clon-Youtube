@@ -10,6 +10,14 @@ export class TypeOrmVideoRepository implements VideoRepository {
   constructor() {
     this.repository = getRepository(Video);
   }
+  async findAllVideos(): Promise<VideoEntity[]> {
+    const videos = await this.repository
+      .createQueryBuilder("video")
+      .leftJoin("video.postedBy", "user")
+      .addSelect(["user.username", "user.id", "user.photo"])
+      .getMany();
+    return VideoEntity.createFromArray(videos);
+  }
   /*async findAllVideos(): Promise<VideoDto[]> {
     return ((await this.repository
       .createQueryBuilder("video")
@@ -40,6 +48,8 @@ export class TypeOrmVideoRepository implements VideoRepository {
   }*/
 
   createVideo(video: VideoEntity): void {
-    this.repository.save((video.toCreate() as unknown) as Video);
+    const data = this.repository.create((video.toCreate() as unknown) as Video);
+    console.log(data);
+    this.repository.save(data);
   }
 }

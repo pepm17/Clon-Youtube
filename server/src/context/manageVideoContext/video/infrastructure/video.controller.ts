@@ -12,16 +12,19 @@ import { MulterMiddleware } from "../../../../middlewares";
 import { CommandQueryBus } from "../../../shared/domain";
 import { TypediCommandBus } from "../../../shared/infrastructure/typediCommandBus";
 import { CreateVideoCommand } from "../application/createVideo";
+import { FindAllVideosQuery } from "../application/findAllVideos";
 
 @JsonController("/video")
 export class VideoController {
   constructor(
     private commandBus: CommandQueryBus = TypediCommandBus.getInstance()
   ) {}
-  /*@Get("/")
+  @Get("/")
   async getAll() {
-    return { response: await this.videoService.findAllVideos() };
-  }*/
+    const query = new FindAllVideosQuery();
+    const data = await this.commandBus.handle(query);
+    return { response: data };
+  }
   /*@Get("/:id")
   async getById(@Params() id: FindByIdValidator) {
     return { response: await this.videoService.findVideoById(id.id) };
