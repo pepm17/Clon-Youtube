@@ -1,17 +1,27 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
 import { RegisterUser, registerUser } from "../";
 import { AppState } from "../../common/redux/rootStore";
 import { useHistory, Redirect } from "react-router-dom";
 import { useEffect } from "react";
 import "./register.scss";
+import { UserState } from "../user.reducer";
+import { connect } from "react-redux";
 
-const Register = () => {
+interface StateProps {
+  user: UserState;
+}
+
+interface DispatchProps {
+  registerUserDispatch: (data: RegisterUser) => void;
+}
+
+type Props = StateProps & DispatchProps;
+
+const Register = (props: Props) => {
   const token = localStorage.getItem("token");
 
-  const dispatch = useDispatch();
-  const user = useSelector((res: AppState) => res.user);
+  const { user, registerUserDispatch } = props;
   const {
     register,
     handleSubmit,
@@ -26,9 +36,9 @@ const Register = () => {
   }, [user.response, redirect]);
 
   const onSubmit = handleSubmit((data) => {
-    data.photo = ((data.photo as unknown) as FileList)[0];
+    data.photo = (data.photo as unknown as FileList)[0];
 
-    dispatch(registerUser(data));
+    registerUserDispatch(data);
   });
 
   return (
@@ -86,4 +96,12 @@ const Register = () => {
   );
 };
 
-export default Register;
+const mapStateToProps = (state: AppState) => ({
+  user: state.user,
+});
+
+const mapDispatchToProps = (dispatch: any) => ({
+  registerUserDispatch: (data: RegisterUser) => dispatch(registerUser(data)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

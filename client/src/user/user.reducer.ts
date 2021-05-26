@@ -1,6 +1,6 @@
 import { UserActionsTypes, UserActionsConst, LoginUser } from ".";
 
-interface UserState {
+export interface UserState {
   loading: boolean;
   response: boolean | LoginUser;
   error: string;

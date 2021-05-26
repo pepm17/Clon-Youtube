@@ -1,24 +1,34 @@
 import React from "react";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Redirect } from "react-router-dom";
 import { UserReturned, loginUser } from "../";
 import { AppState } from "../../common/redux/rootStore";
 import { LoginUser } from "../";
+import { connect } from "react-redux";
 import "./login.scss";
+import { UserState } from "../user.reducer";
 
-const Login = () => {
+interface StateProps {
+  user: UserState;
+}
+
+interface DispatchProps {
+  login: (data: UserReturned) => void;
+}
+
+type Props = StateProps & DispatchProps;
+
+const Login = (props: Props) => {
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm<UserReturned>();
-  const dipatch = useDispatch();
   const history = useHistory();
-  const { response, loading, error } = useSelector(
-    (state: AppState) => state.user
-  );
+
+  const { response, loading, error } = props.user;
+
   const token = localStorage.getItem("token");
 
   useEffect(() => {
@@ -34,7 +44,7 @@ const Login = () => {
     }
   }, [history, loading, error, response]);
 
-  const onSubmit = handleSubmit((data) => dipatch(loginUser(data)));
+  const onSubmit = handleSubmit((data) => props.login(data));
 
   return (
     <>
@@ -70,4 +80,12 @@ const Login = () => {
   );
 };
 
-export default Login;
+const mapStateToProps = (state: AppState) => ({
+  user: state.user,
+});
+
+const mapDispatchToProps = (dispatch: any) => ({
+  login: (data: UserReturned) => dispatch(loginUser(data)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
