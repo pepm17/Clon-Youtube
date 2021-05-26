@@ -13,7 +13,7 @@ export enum VideoActionsConst {
 }
 
 interface VideoStructure {
-  _id: string;
+  id: string;
   title: string;
   description: string;
   image: string;

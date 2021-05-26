@@ -25,7 +25,7 @@ const AllVideos = ({ getAllVideosDispatch, videos }: Props) => {
       {videos.map((data, index) => (
         <div key={index} className="card">
           <Link
-            to={`/video/${data._id}`}
+            to={`/video/${data.id}`}
             style={{ color: "white", textDecoration: "none" }}
           >
             <div className="video">

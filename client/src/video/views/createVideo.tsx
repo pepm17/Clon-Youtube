@@ -46,7 +46,7 @@ const CreateVideo = ({ video: { create }, createVideoDispatch }: Props) => {
 
     data.video = video;
     data.image = image;
-    data.postedBy = userStorage._id;
+    data.postedBy = userStorage.id;
     createVideoDispatch(data);
   });
   return (

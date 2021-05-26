@@ -1,14 +1,14 @@
 import { Video, VideoActionsTypes, VideoActionsConst } from ".";
 
 const init: Video = {
-  _id: "",
+  id: "",
   title: "",
   description: "",
   image: "",
   video: "",
   createdAt: new Date(),
   postedBy: {
-    _id: "",
+    id: "",
     email: "",
     photo: "",
     username: "",

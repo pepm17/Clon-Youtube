@@ -6,7 +6,7 @@ import { User } from "../../user";
 import { MemoryRouter } from "react-router-dom";
 
 const user: User = {
-  _id: "1",
+  id: "1",
   email: "email@exmaple.com",
   photo: "photo",
   username: "username",

@@ -5,13 +5,13 @@ import { render } from "@testing-library/react";
 import { Video } from "../video.types";
 
 const video: Video = {
-  _id: "1",
+  id: "1",
   title: "Title 1",
   description: "Description 1",
   image: "image",
   video: "video",
   postedBy: {
-    _id: "1",
+    id: "1",
     email: "email@email.com",
     photo: "photo",
     username: "username",
